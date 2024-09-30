@@ -4,7 +4,13 @@ import styles from '../CssModules/Home.module.css';
 import Navbar from '../Components/navbar/Navbar';
 import Image from 'next/image';
 import Footer from '../Components/footer/footer';
+import Link from 'next/link';
+import {  Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Iniciação Científica',
+  description: 'Site da iniciação Científica'
+}
 
 function App(): JSX.Element {
   return (
@@ -17,13 +23,17 @@ function App(): JSX.Element {
             Grupo de Iniciação Científica de Florianópolis, Santa Catarina,
             propondo ferramentas para análises em Acústica de forma acessível.
           </p>
+          <Link href={'/About'}>
           <button className={styles.button}>
             Saiba mais <span className={styles.arrow}>▶</span>
           </button>
+          </Link>
         </div>
+
         <div className={styles.item}>
         <Image src="/Rocket.svg" alt="foguete" width={500} height={500} className={styles.img} />
         </div>
+
       </div>
       <Footer/>
     </div>

@@ -1,10 +1,17 @@
-'use client';
+
 import '../../styles/Global.css';
 import React from 'react'
 import styles from "./page.module.css";
 import Image from 'next/image'
 import Navbar from '../../Components/navbar/Navbar';
+import Project from '../../Components/project/Project';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Iniciação Científica - Sobre',
+  description: 'Site da iniciação Científica',
+  
+}
 
 const About = () => {
 
@@ -12,7 +19,7 @@ return(
 
   <div className={styles.main}>
       <Navbar />
-      <div className={styles.container1}>
+      <div className={styles.container}>
             <div className={styles.item1}>
               <Image src="/lamp.svg" width={500} height={500} alt="cubos" className={styles.img} />
             </div>
@@ -52,10 +59,11 @@ return(
               </ul>
             </div>
             <div className={styles.containerImg}>
-            <Image src="/group.jpg" width={600} height={550} alt="grupo" className={styles.img} />
+            <Image src="/group.jpg" width={600} height={550} alt="grupo" className={styles.imgGroup} />
             </div>
-          </div>
 
+          </div>
+          <Project/>
         </div>
 
 )
