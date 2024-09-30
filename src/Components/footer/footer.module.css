@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+.container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  font-family: 'Poppins';
+  color: rgba(255, 255, 255, 0.63);
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    font-size: 10px;
+    text-align: center;
+}
+}

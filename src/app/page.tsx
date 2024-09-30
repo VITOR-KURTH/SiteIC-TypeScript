@@ -3,6 +3,7 @@ import '../styles/Global.css';
 import styles from '../CssModules/Home.module.css';
 import Navbar from '../Components/navbar/Navbar';
 import Image from 'next/image';
+import Footer from '../Components/footer/footer';
 
 
 function App(): JSX.Element {
@@ -24,6 +25,7 @@ function App(): JSX.Element {
         <Image src="/Rocket.svg" alt="foguete" width={500} height={500} className={styles.img} />
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
