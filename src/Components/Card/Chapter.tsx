@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './card.module.css'
 
 
+// eslint-disable-next-line react/prop-types
 const Chapter = ({ title, subtitle }) => {
 
   return (

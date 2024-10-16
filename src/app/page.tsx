@@ -1,21 +1,12 @@
 import React from 'react';
-import '../styles/Global.css';
 import styles from '../CssModules/Home.module.css';
-import Navbar from '../Components/navbar/Navbar';
 import Image from 'next/image';
-import Footer from '../Components/footer/footer';
 import Link from 'next/link';
-import {  Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Iniciação Científica',
-  description: 'Site da iniciação Científica'
-}
 
 function App(): JSX.Element {
   return (
     <div className="App">
-      <Navbar />
       <div className={styles.container}>
         <div className={styles.item}>
           <h1 className={styles.title}>Iniciação Científica</h1>
@@ -35,7 +26,6 @@ function App(): JSX.Element {
         </div>
 
       </div>
-      <Footer/>
     </div>
   );
 }

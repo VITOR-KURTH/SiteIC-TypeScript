@@ -1,16 +1,13 @@
-
-import '../../styles/Global.css';
 import React from 'react'
 import styles from "./page.module.css";
 import Image from 'next/image'
-import Navbar from '../../Components/navbar/Navbar';
 import Project from '../../Components/project/Project';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Iniciação Científica - Sobre',
   description: 'Site da iniciação Científica',
-  
+
 }
 
 const About = () => {
@@ -18,7 +15,6 @@ const About = () => {
 return(
 
   <div className={styles.main}>
-      <Navbar />
       <div className={styles.container}>
             <div className={styles.item1}>
               <Image src="/lamp.svg" width={500} height={500} alt="cubos" className={styles.img} />
