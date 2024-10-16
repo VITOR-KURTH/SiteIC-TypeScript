@@ -1,0 +1,384 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/app/About/page.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+.page_container__newYm {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 0 60px;
+}
+
+
+.page_container1__n6d9H {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 20px;
+}
+
+.page_container2__aJODW {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  margin-bottom: 10%;
+  gap: 100px;
+  padding: 20px;
+
+}
+
+.page_containerImg__8iSob{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: auto;
+}
+
+.page_item1__rB_ls {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  margin-bottom: 10%;
+}
+
+.page_item2__FCF8_ {
+  flex: 1 1;
+  margin-bottom: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  height: 265px;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 25px;
+  border-radius: 10px;
+  background: rgba(41, 22, 99, 0.50);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.page_item2__FCF8_ h1,
+.page_item2__FCF8_ p {
+  text-align: center;
+}
+
+.page_title___PcyZ {
+  color: #ffffffee;
+  font-size: 72px;
+  text-align: right;
+  font-family: 'Poppins';
+
+}
+
+.page_desc__Uudxy {
+  font-size: 20px;
+  font-family: 'Poppins';
+  color: #D8CBFF;
+  text-align: right;
+  font-weight: 100;
+  font-weight: 500;
+  list-style-type: none;
+}
+
+.page_item3__4bSUq ul {
+  margin-top: 15px;
+}
+
+.page_button__A_gnY:hover {
+  background-color: #e4339794;
+}
+
+.page_arrow__TLlt8 {
+  margin-left: 20px;
+}
+
+.page_img__vZxpw {
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+
+}
+
+.page_imgGroup__TIgFC {
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 800px) {
+
+  .page_container1__n6d9H {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 2rem 0rem;
+  }
+
+  .page_container2__aJODW {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin-top: 1rem;
+  }
+
+  .page_container2__aJODW.page_title___PcyZ {
+    display: flex;
+    text-align: center;
+  }
+
+  .page_title___PcyZ {
+    font-size: 2rem;
+    text-align: center;
+    color: #ffffffee;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+
+  }
+
+  .page_titleMain__9CjL7 {
+    font-size: 3rem;
+    text-align: left;
+    margin-top: 1rem;
+
+  }
+
+  .page_item__WxB8i {
+    border-radius: 5px;
+    background: rgba(41, 22, 99, 0.50);
+    margin: 0.5rem 0rem;
+    padding: 15px 25px;
+    box-shadow: 5px 5px 5px #0000003f;
+
+  }
+
+  .page_desc__Uudxy {
+    padding-bottom: 1rem;
+    text-align: left;
+    font-size: 15px;
+  }
+
+  .page_descItem__mAm2a {
+    font-size: 15px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-family: 'Poppins';
+    color: #D8CBFF;
+    text-align: left;
+    font-weight: 100;
+    font-weight: 500;
+  }
+
+  .page_ul__NcrZp {
+    padding-bottom: 0.5rem;
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Poppins';
+    color: #D8CBFF;
+    font-weight: 100;
+    font-weight: 500;
+    list-style-type: none;
+  }
+
+
+  .page_container2__aJODW {
+    display: flex;
+  }
+
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/Components/project/project.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+.project_containerProject__Gnnzk {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+  width: 100%;
+  font-family: 'Poppins';
+  color: #D8CBFF;
+}
+
+.project_container__XomKw {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 0 60px;
+}
+
+.project_textGroups__v4jc1 li {
+  list-style-position: outside;
+  font-size: 20px;
+}
+
+.project_textGroups__v4jc1 p {
+  font-size: 15px;
+  color: #d8cbffc5;
+  margin-bottom: 2.5rem;
+}
+
+.project_title__BGyLM {
+  color: #ffffffee;
+  font-size: 72px;
+  text-align: left;
+  padding: 1rem 0rem 2.5rem 0rem;
+  font-family: 'Poppins';
+}
+
+.project_subtitle__TDVk5 {
+  color: #ffffffee;
+  font-size: 50px;
+  text-align: left;
+  padding: 2.5rem 0rem;
+}
+
+.project_containerProject__Gnnzk ol {
+  font-size: 30px;
+}
+
+.project_ourProject__jX1tp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  gap: 1rem;
+  height: 10rem;
+}
+
+.project_moreInfo__n8v94 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project_moreInfo__n8v94 a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 17px;
+}
+
+.project_moreInfo__n8v94 a:hover {
+  color: #e9dfff;
+}
+
+.project_btnPDF__SYDvU {
+  background-color: #451892a9;
+  font-size: 17px;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.project_cardProject__v6VXy {
+  /* background: rgba(41, 22, 99, 0.801); */
+  background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
+  margin: 1rem 0rem 2.5rem 0rem;
+  padding: 4rem 6rem;
+}
+
+.project_titleProject__8LbsW {
+  font-size: 30px;
+  color: #8665CD;
+  font-weight: bold;
+  text-align: left;
+}
+
+.project_textProject__mP2vO {
+  text-align: justify;
+  font-size: 18px;
+  padding: 3rem 0rem;
+}
+
+.project_textProject__mP2vO span {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 800px) {
+
+  .project_title__BGyLM {
+      font-size: 2rem;
+      text-align: left;
+      color: #ffffffee;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+  }
+
+  .project_text__Gt_We {
+      font-size: 20px;
+      font-weight: 100;
+  }
+
+  .project_textGroups__v4jc1 li {
+      font-size: 1.2rem;
+  }
+
+  .project_textGroups__v4jc1 p {
+      font-size: 0.8rem;
+      padding: 0.5rem 0rem;
+  }
+  .project_textProject__mP2vO p{
+      padding: 0.5rem 0rem;
+  }
+  .project_subtitle__TDVk5 {
+      font-size: 1.5rem;
+      padding: 0rem 0rem;
+  }
+
+  .project_cardProject__v6VXy {
+      width: 100%;
+      margin: 0rem;
+      background: none;
+      padding: 1rem 0rem;
+  }
+
+  .project_titleProject__8LbsW {
+      font-size: 25px;
+      text-align: left;
+  }
+  .project_textProject__mP2vO{
+      font-size: 15px;
+      text-align: left;
+  }
+  .project_moreInfo__n8v94{
+      flex-direction: column;
+      gap: 1.5rem;
+  }
+  .project_moreInfo__n8v94 a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 17px;
+  }
+  .project_moreInfo__n8v94 img{
+      max-width: 35px;
+  }
+  .project_moreInfo__n8v94 a:hover {
+      color: #e9dfff;
+  }
+
+  .project_btnPDF__SYDvU {
+      background-color: #451892a9;
+      font-size: 17px;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-align: center;
+      display: flex;
+      cursor: pointer;
+  }
+
+}
+

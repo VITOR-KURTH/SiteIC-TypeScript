@@ -3,6 +3,7 @@
     "/Calculator/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/Calculator/page.css",
       "static/chunks/app/Calculator/page.js"
     ],
     "/layout": [
@@ -10,6 +11,29 @@
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/About/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/About/page.css",
+      "static/chunks/app/About/page.js"
+    ],
+    "/Library/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Library/page.css",
+      "static/chunks/app/Library/page.js"
+    ],
+    "/Contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Contact/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
