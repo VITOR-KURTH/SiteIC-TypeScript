@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import React, { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import '../../styles/Global.css';

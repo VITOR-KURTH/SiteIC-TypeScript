@@ -1,14 +1,8 @@
 import React from 'react';
-import '../styles/Global.css';
 import styles from '../CssModules/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import {  Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: 'Iniciação Científica',
-  description: 'Site da iniciação Científica'
-}
 
 function App(): JSX.Element {
   return (

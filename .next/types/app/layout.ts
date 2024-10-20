@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // File: C:\Users\victo\Documents\IC-TypeScript\src\app\layout.tsx
+=======
+// File: C:\Users\victo\Documents\teste\SiteIC-TypeScript\src\app\layout.tsx
+>>>>>>> 53003a9094a52d37d886cd8e4d3734b431fce2d6
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

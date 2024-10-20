@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 // File: C:\Users\victo\Documents\IC-TypeScript\src\app\Library\page.tsx
 import * as entry from '../../../../src/app/Library/page.jsx'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
 type TEntry = typeof import('../../../../src/app/Library/page.jsx')
+=======
+// File: C:\Users\victo\Documents\teste\SiteIC-TypeScript\src\app\Library\page.tsx
+import * as entry from '../../../../src/app/Library/page.js'
+import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
+
+type TEntry = typeof import('../../../../src/app/Library/page.js')
+>>>>>>> 53003a9094a52d37d886cd8e4d3734b431fce2d6
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
@@ -16,12 +24,20 @@ checkFields<Diff<{
   preferredRegion?: 'auto' | 'global' | 'home' | string | string[]
   runtime?: 'nodejs' | 'experimental-edge' | 'edge'
   maxDuration?: number
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 53003a9094a52d37d886cd8e4d3734b431fce2d6
   metadata?: any
   generateMetadata?: Function
   viewport?: any
   generateViewport?: Function
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 53003a9094a52d37d886cd8e4d3734b431fce2d6
 }, TEntry, ''>>()
 
 // Check the prop type of the entry function

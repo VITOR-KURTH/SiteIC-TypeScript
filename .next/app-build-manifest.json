@@ -24,6 +24,20 @@
       "static/chunks/app/About/page.js"
     ],
     "/Library/page": [
+<<<<<<< HEAD
+=======
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Library/page.css",
+      "static/chunks/app/Library/page.js"
+    ],
+    "/Contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Contact/page.js"
+    ],
+    "/_not-found/page": [
+>>>>>>> 53003a9094a52d37d886cd8e4d3734b431fce2d6
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/Library/page.css",
