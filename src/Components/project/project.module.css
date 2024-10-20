@@ -11,7 +11,7 @@
 
 .container {
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
   gap: 100px;
   padding: 0 60px;
 }

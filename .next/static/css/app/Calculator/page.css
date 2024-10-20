@@ -1,0 +1,270 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/app/Calculator/page.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+.page_main__LwNkG {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page_container__B_Qom {
+    min-height: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #45189200;
+    font-family: 'Poppins';
+    border-width: 1px;
+    border-style: solid;
+    border-color: #451892;
+    background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
+    border-radius: 8px;
+}
+
+.page_title__ktPRa {
+    font-weight: 700;
+    font-size: 26px;
+    text-align: center;
+    color: #FBF5FF;
+    margin-bottom: 30px;
+}
+
+
+.page_item1__wG3De {
+    width: 500px;
+    height: 100%;
+    max-width: 100%;
+    padding: 50px;
+    margin-left: 69px;
+    margin-bottom: 59px;
+}
+
+.page_item2__Zvr4c {
+    width: 500px;
+    min-height: 600px;
+    height: 100%;
+    padding: 50px;
+    margin-bottom: 59px;
+    margin-right: 69px;
+}
+
+.page_item1Text__DE4YV {
+    margin-top: 44px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    max-width: 400px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.page_item2Text__Srw6D {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    ;
+}
+
+.page_input__o7sHC {
+    width: 400px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #34008C70;
+    border-style: hidden;
+    font-size: 20px;
+    padding-left: 16px;
+    color: #CB88FF;
+}
+
+.page_inputSelect__oEjV5 {
+    width: 418px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #34008C70;
+    border-style: hidden;
+    padding: 16px;
+    font-size: 20px;
+    color: #CB88FF;
+}
+
+.page_resultInput__MU07r {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 28px;
+}
+
+.page_option__9pVEo {
+    background-color: #120234;
+    font-size: 18px;
+    padding: 5px;
+    color: #ffffffc9;
+}
+
+.page_option__9pVEo:checked {
+    background-color: #451892;
+    padding: 5px;
+}
+
+.page_input__o7sHC:focus {
+    outline: none;
+    background-color: rgba(7, 0, 18, 0.44);
+}
+
+@media screen and (max-width: 800px) {
+    .page_main__LwNkG{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .page_container__B_Qom {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #45189200;
+        font-family: 'Poppins';
+        border-width: 0px;
+        border-style: solid;
+        border-color: #451892;
+        background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
+        border-radius: 8px;
+        gap: 20px;
+        padding: 2rem;
+    }
+
+    .page_item1Text__DE4YV {
+        margin-top: 15px;
+        font-size: 15px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .page_title__ktPRa {
+        font-weight: 800;
+        font-size: 23px;
+        text-align: center;
+        color: #FBF5FF;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    .page_inputSelect__oEjV5 {
+        height: 60px;
+        max-width: 100%;
+        border-radius: 8px;
+        background-color: #34008C70;
+        border-style: hidden;
+        padding-left: 5%;
+        padding: 1rem;
+        font-size: 15px;
+        color: #CB88FF;
+    }
+
+    .page_resultInputM__JWTCi {
+        font-size: 15px;
+    }
+
+    .page_option__9pVEo {
+        background-color: #120234;
+        font-size: 14px;
+        padding: 5px;
+        color: #ffffffc9;
+    }
+
+    .page_option__9pVEo:checked {
+        background-color: #451892;
+        padding: 5px;
+    }
+
+    .page_input__o7sHC:focus {
+        outline: none;
+        background-color: rgba(7, 0, 18, 0.44);
+    }
+
+    .page_input__o7sHC {
+        width: 95%;
+        height: 40px;
+        border-radius: 8px;
+        background-color: #34008C70;
+        border-style: hidden;
+        font-size: 15px;
+        padding-left: 5%;
+        color: #CB88FF;
+    }
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/Global.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+:root {
+  --primary: #34008c;
+  --secondary: #7900ff;
+  --tertiary: #8665cd;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; /* Adicione isso para garantir que padding e border sejam incluídos no tamanho total dos elementos */
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+html,
+body {
+  height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: linear-gradient(
+    112deg,
+    #2242da -7.38%,
+    #451892 -1.58%,
+    #2f0e6b 13.55%,
+    #1d064b 26.57%,
+    #14023b 40.26%,
+    #170341 57.22%,
+    #1e074d 69.33%,
+    #310f6e 90.72%,
+    #263acb 133.23%
+  );
+  color: #fff;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1366px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-top: 120px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 60px;
+}
+
+
+.elipse {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+@media screen and (max-width: 800px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  .container {
+    padding: 0 50px;
+  }
+}
+

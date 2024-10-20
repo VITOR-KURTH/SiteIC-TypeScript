@@ -7,9 +7,12 @@
     "plugin:react/recommended",
     "airbnb",
     "prettier",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+     "eslint:recommended",
+    "plugin:next/recommended",
+    "next/core-web-vitals"
   ],
-  "plugins": ["react", "react-hooks", "prettier", "@typescript-eslint"],
+  "plugins": ["react", "react-hooks", "prettier", "@typescript-eslint", "next"],
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
