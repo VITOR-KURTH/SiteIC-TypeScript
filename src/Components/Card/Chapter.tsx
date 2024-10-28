@@ -1,16 +1,19 @@
+// Chapter.tsx
 import React from 'react';
-import styles from './card.module.css'
+import styles from './card.module.css';
 
+type ChapterProps = {
+  title: string;
+  subtitle: string;
+};
 
-// eslint-disable-next-line react/prop-types
-const Chapter = ({ title, subtitle }) => {
-
+const Chapter: React.FC<ChapterProps> = ({ title, subtitle }) => {
   return (
     <div className={styles.card}>
-        <div>
+      <div>
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.subtitle}>{subtitle}</p>
-        </div>
+      </div>
     </div>
   );
 };

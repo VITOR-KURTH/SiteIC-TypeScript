@@ -1,14 +1,1 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/Calculator/page": "app/Calculator/page.js",
-<<<<<<< HEAD
-  "/About/page": "app/About/page.js",
-  "/page": "app/page.js",
-  "/Library/page": "app/Library/page.js"
-=======
-  "/page": "app/page.js",
-  "/About/page": "app/About/page.js",
-  "/Library/page": "app/Library/page.js",
-  "/Contact/page": "app/Contact/page.js"
->>>>>>> 53003a9094a52d37d886cd8e4d3734b431fce2d6
-}
+{}
