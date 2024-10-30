@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from "./page.module.css";
 import Image from 'next/image'
-import Project from '../../Components/project/Project';
 import { Metadata } from 'next';
+import History from '../../Components/History/History';
 
 export const metadata: Metadata = {
   title: 'Iniciação Científica - Sobre',
@@ -59,7 +59,7 @@ return(
             </div>
 
           </div>
-          <Project/>
+          <History/>
         </div>
 
 )
