@@ -24,17 +24,10 @@
       "static/css/app/Calculator/page.css",
       "static/chunks/app/Calculator/page.js"
     ],
-    "/Library/page": [
+    "/Perfil/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/Library/page.css",
-      "static/chunks/app/Library/page.js"
-    ],
-    "/About/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/About/page.css",
-      "static/chunks/app/About/page.js"
+      "static/chunks/app/Perfil/page.js"
     ]
   }
 }

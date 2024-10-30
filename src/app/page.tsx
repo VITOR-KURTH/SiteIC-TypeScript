@@ -16,7 +16,7 @@ function App(): JSX.Element {
           </p>
           <Link href={'/About'}>
           <button className={styles.button}>
-            Saiba mais <span className={styles.arrow}>▶</span>
+            Saiba mais ▶
           </button>
           </Link>
         </div>
