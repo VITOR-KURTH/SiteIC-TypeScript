@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 0 60px;
+}
+
+.item1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  margin-bottom: 10%;
+}
+
+.container1 {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  padding: 20px;
+}
+
+.title {
+  font-size: 1.7rem;
+  text-align: center;
+  color: #ffffffee;
+  margin-top: 1rem;
+}
+
+.containerCadastro {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #45189200;
+  font-family: 'Poppins';
+  border-width: 1px;
+  border-style: solid;
+  border-color: #451892;
+  background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
+  border-radius: 8px;
+
+}
+
+.input {
+  width: 300px;
+  height: 50px;
+  border-radius: 8px;
+  background-color: #ffffffc6;
+  border-style: hidden;
+  font-size: 20px;
+  padding-left: 16px;
+  color: #000000;
+}
+
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 2.7em 5.6em;
+}
+
+
+.buttonContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 15px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
