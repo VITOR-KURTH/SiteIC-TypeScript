@@ -1,45 +1,68 @@
-// index.js
-require("dotenv").config(); 
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');  // Importando o pacote CORS
 
-const port = process.env.PORT || 5000; // Define uma porta padrão caso PORT não seja definida
-
-const db = require("./db");
-const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => {
-    res.json({ message: "Funcionando" });
+// Habilita CORS para todas as origens
+app.use(cors());  // Ou você pode usar app.use(cors({ origin: 'http://localhost:5173' })) para limitar a origem
+
+// Usando body-parser para entender o corpo das requisições em JSON
+app.use(bodyParser.json());
+
+const usuarios = [];
+
+// Rota para obter todos os usuários
+app.get('/usuarios', (req, res) => {
+    res.json(usuarios);
 });
 
-app.get("/usuarios", async (req, res) => {
-    try {
-        const usuarios = await db.selectCustomers();
-        res.json(usuarios);
-    } catch (error) {
-        console.error("Erro ao buscar usuários:", error);
-        res.status(500).json({ error: "Erro ao buscar usuários" });
+// Rota para obter um usuário específico por email
+app.get('/usuarios/:email', (req, res) => {
+    const { email } = req.params;
+    const usuario = usuarios.find(v => v.email === email);
+    if (usuario) {
+        res.json(usuario);
+    } else {
+        res.status(404).json({ message: 'usuário não encontrado.' });
     }
 });
 
-app.post("/usuarios", async (req, res) => {
-    const { nome_usuario, email_usuario, senha_usuario } = req.body;
+// Rota para cadastrar um novo usuário
+app.post('/usuarios', (req, res) => {
+    const { email, nome, senha  } = req.body;
+    const usuario = { email, nome, senha };
+    usuarios.push(usuario);
+    res.status(201).json({ message: 'Usuário cadastrado com sucesso.' });
+});
 
-    try {
-        // Inserir o novo usuário no banco de dados
-        const client = await db.connect();
-        await client.query(
-            "INSERT INTO usuarios (nome_usuario, email_usuario, senha_usuario) VALUES ($1, $2, $3)",
-            [nome_usuario, email_usuario, senha_usuario]
-        );
-        client.release();
-
-        res.status(201).json({ message: "Usuário cadastrado com sucesso!" });
-    } catch (error) {
-        console.error("Erro ao cadastrar usuário:", error);
-        res.status(500).json({ error: "Erro ao cadastrar usuário" });
+// Rota para atualizar as informações de um usuário
+app.put('/usuarios/:email', (req, res) => {
+    const { email } = req.params;
+    const { nome, senha } = req.body;
+    const usuario = usuarios.find(v => v.email === email);
+    if (usuario) {
+        usuario.nome = nome || usuario.nome;
+        usuario.senha = senha || usuario.senha;
+        res.json({ message: 'Informações do usuário atualizadas com sucesso.' });
+    } else {
+        res.status(404).json({ message: 'usuário não encontrado.' });
     }
 });
 
+// Rota para excluir um usuário
+app.delete('/usuarios/:email', (req, res) => {
+    const { email } = req.params;
+    const veiculoIndex = usuarios.findIndex(v => v.email === email);
+    if (veiculoIndex !== -1) {
+        usuarios.splice(veiculoIndex, 1);
+        res.json({ message: 'usuário excluído com sucesso.' });
+    } else {
+        res.status(404).json({ message: 'usuário não encontrado.' });
+    }
+});
+
+const port = 5000;
 app.listen(port, () => {
-    console.log(`Backend rodando na porta ${port}`);
+    console.log(`Servidor rodando em http://localhost:${port}`);
 });
