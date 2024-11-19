@@ -1,0 +1,8 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/Library/page": "app/Library/page.js",
+  "/About/page": "app/About/page.js",
+  "/chapters/[id]/page": "app/chapters/[id]/page.js",
+  "/Contact/page": "app/Contact/page.js",
+  "/page": "app/page.js"
+}

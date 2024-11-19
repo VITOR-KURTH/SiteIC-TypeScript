@@ -1,0 +1,30 @@
+#PARA UTILIZAR ESSES ENDPOINTS É NECESSÁRIO INSTALAR A EXTENSÃO DO VSCODE "REST CLIENT"
+###
+
+GET http://localhost:3333/usuarios
+
+###
+
+POST http://localhost:3333/usuarios
+Content-Type: application/json
+
+{
+    "nome": "Exemplo 2",
+    "senha": "123",
+    "email": "jogaDoG@outlook.com"
+}
+
+###
+ 
+PUT http://localhost:3333/usuarios/c6f0d3ab-a378-4baa-b500-19e749d569fd
+Content-Type: application/json
+
+{
+    "nome": "TESTE",
+    "senha": "12345",
+    "email": "aaaaDoG@yahoo.com"
+}
+
+###
+
+DELETE http://localhost:3333/usuarios/c6f0d3ab-a378-4baa-b500-19e749d569fd

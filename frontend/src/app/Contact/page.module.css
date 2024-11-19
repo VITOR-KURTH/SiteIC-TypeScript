@@ -1,0 +1,21 @@
+.container {
+  margin: 0;
+}
+
+.title {
+  height: 80px;
+  display: flex;
+  align-items: left;
+  color: rgba(255, 255, 255, 0.63);
+  justify-content: left;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+@media screen and (max-width: 800px) {
+  .titleMobile {
+      font-weight: bold;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.63);
+  }
+}
