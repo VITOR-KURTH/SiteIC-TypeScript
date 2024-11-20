@@ -56,7 +56,7 @@ return(
               </ul>
             </div>
             <div className={styles.containerImg}>
-            <Image src="/group.jpg" width={600} height={550} alt="grupo" className={styles.imgGroup} />
+            <Image src="/Group.jpg" width={590} height={460} alt="grupo" className={styles.imgGroup} />
             </div>
 
           </div>

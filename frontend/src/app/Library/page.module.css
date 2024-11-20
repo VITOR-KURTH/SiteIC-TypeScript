@@ -1,17 +1,36 @@
 .container {
   margin: 0;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
   margin-left: 5%;
-  height: 80px;
+  height: 80px; /* Você pode considerar remover isso ou ajustar em telas menores */
   display: flex;
-  align-items: left;
+  align-items: flex-start; /* Use 'flex-start' ao invés de 'left' */
   color: rgba(255, 255, 255, 0.63);
-  justify-content: left;
+  justify-content: flex-start; /* Use 'flex-start' ao invés de 'left' */
   font-weight: bold;
-  font-size: 45px;
+  font-size: 45px; /* Tamanho da fonte padrão */
   font-family: 'Poppins';
 }
 
+/* Media Query para telas menores que 800px */
+@media screen and (max-width: 800px) {
+  .title {
+    margin-left: 3%; /* Ajusta a margem esquerda */
+    font-size: 35px; /* Reduz o tamanho da fonte */
+    height: auto; /* Remove a altura fixa */
+  }
+}
 
+/* Media Query para telas menores que 500px */
+@media screen and (max-width: 500px) {
+  .title {
+    margin-left: 2%; /* Ajusta a margem esquerda */
+    font-size: 28px; /* Reduz ainda mais o tamanho da fonte */
+    height: auto; /* Remove a altura fixa */
+  }
+}

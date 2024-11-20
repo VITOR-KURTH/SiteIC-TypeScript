@@ -1,38 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
 :root {
-  --primary: #34008c;
-  --secondary: #7900ff;
-  --tertiary: #8665cd;
+  --primary: #34008C;
+  --secondary: #7900FF;
+  --tertiary: #8665CD;
 }
 
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; /* Adicione isso para garantir que padding e border sejam incluídos no tamanho total dos elementos */
+  box-sizing: border-box; /* Inclui padding e border no tamanho total dos elementos */
   scrollbar-width: thin;
   scroll-behavior: smooth;
   scrollbar-color: var(--secondary) var(--primary);
 }
 
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--tertiary);
+}
+
 html,
 body {
-  height: 100%;
+  height: 100%; /* Garante que o body ocupe 100% da altura da tela */
   max-width: 100vw;
   overflow-x: hidden;
   background: linear-gradient(
     112deg,
-    #2242da -7.38%,
+    #2242DA -7.38%,
     #451892 -1.58%,
-    #2f0e6b 13.55%,
-    #1d064b 26.57%,
-    #14023b 40.26%,
+    #2F0E6B 13.55%,
+    #1D064B 26.57%,
+    #14023B 40.26%,
     #170341 57.22%,
-    #1e074d 69.33%,
-    #310f6e 90.72%,
-    #263acb 133.23%
+    #1E074D 69.33%,
+    #310F6E 90.72%,
+    #263ACB 133.23%
   );
   color: #fff;
+  font-family: 'Poppins', sans-serif; /* Adicionando a fonte aqui */
 }
-
 
 a {
   text-decoration: none;
@@ -40,29 +60,49 @@ a {
 }
 
 .container {
-  max-width: 1366px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding-top: 120px; 
+  max-width: 1366px; /* Define a largura máxima da container */
+  min-height: 100vh; /* Garante que ocupe toda a altura do viewport */
+  margin: 0 auto; /* Centraliza horizontalmente */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 0 60px;
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  padding: 0 20px; /* Padding lateral */
 }
-
 
 .elipse {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 20px; /* Ajuste a posição como necessário */
+  left: 20px; /* Ajuste a posição como necessário */
   z-index: 1;
+  width: 150px; /* Tamanho inicial */
+  height: 150px; /* Tamanho inicial */
+  background: var(--secondary); /* Adicionando fundo à elipse */
+  border-radius: 50%; /* Garantindo que a elipse seja circular */
 }
 
 @media screen and (max-width: 800px) {
   ::-webkit-scrollbar {
-    width: 0px;
+    width: 0; /* Remove a largura da barra de rolagem em dispositivos pequenos */
   }
+
   .container {
-    padding: 0 50px;
+    padding: 0 30px; /* Reduz a margem lateral para dispositivos menores */
+  }
+
+  .elipse {
+    width: 100px; /* Reduz a largura da elipse em telas pequenas */
+    height: 100px; /* Reduz a altura da elipse */
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 0 15px; /* Margem lateral menor em telas muito pequenas */
+  }
+
+  .elipse {
+    width: 80px; /* Ainda menor em telas de smartphones */
+    height: 80px;
   }
 }

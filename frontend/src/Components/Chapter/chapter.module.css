@@ -2,7 +2,42 @@
     display: flex;
     font-family: Poppins;
     flex-direction: column;
+    margin-left: 5%;
+    margin-right: 5%;
 }
+
+.VoltarButton {
+  width: 86px;
+  height: 58px;
+  border: none;
+  margin-top: 0;
+  margin-bottom: 8%;
+  background-color: #e43397;
+  color: #ffffff;
+  font-family: 'Poppins';
+  font-size: 0.9em;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.VoltarButton:hover {
+  background-color: #e4339794;
+}
+
+.voltarContainer {
+  display:flex;
+  justify-content: flex-end;
+  position: sticky;
+
+  left: 0;
+  padding-left: 10px;
+}
+
+
 
 .ChapterContainer h2 {
     color: #8665CD;

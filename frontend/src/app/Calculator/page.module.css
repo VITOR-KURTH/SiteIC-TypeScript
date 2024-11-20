@@ -7,7 +7,7 @@
 }
 
 .container {
-    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: space-between;
     color: #45189200;
@@ -17,6 +17,8 @@
     border-color: #451892;
     background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
     border-radius: 8px;
+    padding: 20px;
+    align-items: center;
 }
 
 .title {
@@ -26,7 +28,6 @@
     color: #FBF5FF;
     margin-bottom: 30px;
 }
-
 
 .item1 {
     width: 500px;
@@ -60,7 +61,6 @@
     font-size: 18px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.5);
-    ;
 }
 
 .input {
@@ -108,87 +108,83 @@
     background-color: rgba(7, 0, 18, 0.44);
 }
 
+/* Media Query para telas menores que 800px */
 @media screen and (max-width: 800px) {
-    .main{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .main {
+        flex-direction: column; /* Muda para coluna em telas menores */
+        align-items: center; /* Centraliza os itens */
         gap: 1.5rem;
     }
+
     .container {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        width: 100%; /* Largura total */
+        flex-direction: column; /* Muda para coluna */
+        justify-content: center; /* Centraliza verticalmente */
         color: #45189200;
-        font-family: 'Poppins';
-        border-width: 0px;
-        border-style: solid;
-        border-color: #451892;
-        background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
-        border-radius: 8px;
-        gap: 20px;
-        padding: 2rem;
+        border-width: 0px; /* Remove a borda */
+        gap: 20px; /* Espaçamento entre os itens */
+        padding: 2rem; /* Padding interno */
     }
 
-    .item1Text {
+    .item1, .item2 {
+        width: 100%; /* Largura total */
+        padding: 20px; /* Reduz o padding */
+        margin: 0; /* Remove margens laterais */
+    }
+
+    .item1Text, .item2Text {
         margin-top: 15px;
-        font-size: 15px;
-        font-weight: 400;
+        font-size: 15px; /* Tamanho da fonte reduzido */
         color: rgba(255, 255, 255, 0.5);
     }
 
     .title {
         font-weight: 800;
-        font-size: 23px;
-        text-align: center;
-        color: #FBF5FF;
-        margin-bottom: 0px;
-        padding-bottom: 0px;
+        font-size: 23px; /* Tamanho da fonte reduzido */
+        margin-bottom: 0px; /* Remove margem inferior */
+        padding-bottom: 0px; /* Remove padding inferior */
     }
 
-    .inputSelect {
-        height: 60px;
-        max-width: 100%;
-        border-radius: 8px;
-        background-color: #34008C70;
-        border-style: hidden;
-        padding-left: 5%;
-        padding: 1rem;
-        font-size: 15px;
-        color: #CB88FF;
+    .inputSelect, .input {
+        width: 95%; /* Largura total */
+        height: 40px; /* Altura reduzida */
+        font-size: 15px; /* Tamanho da fonte reduzido */
+        padding-left: 5%; /* Ajusta padding */
     }
 
-    .resultInputM {
-        font-size: 15px;
+    .resultInput {
+        font-size: 15px; /* Tamanho da fonte reduzido */
     }
 
     .option {
-        background-color: #120234;
-        font-size: 14px;
-        padding: 5px;
-        color: #ffffffc9;
+        font-size: 14px; /* Tamanho da fonte reduzido */
+    }
+}
+
+/* Media Query para telas menores que 500px */
+@media screen and (max-width: 500px) {
+    .container {
+        padding: 10px; /* Menor padding */
     }
 
-    .option:checked {
-        background-color: #451892;
-        padding: 5px;
+    .item1, .item2 {
+        padding: 15px; /* Reduz o padding */
     }
 
-    .input:focus {
-        outline: none;
-        background-color: rgba(7, 0, 18, 0.44);
+    .title {
+        font-size: 20px; /* Tamanho da fonte reduzido */
     }
 
-    .input {
-        width: 95%;
-        height: 40px;
-        border-radius: 8px;
-        background-color: #34008C70;
-        border-style: hidden;
-        font-size: 15px;
-        padding-left: 5%;
-        color: #CB88FF;
+    .item1Text, .item2Text {
+        font-size: 14px; /* Tamanho da fonte reduzido */
+    }
+
+    .input, .inputSelect {
+        height: 35px; /* Altura reduzida */
+        font-size: 14px; /* Tamanho da fonte reduzido */
+    }
+
+    .resultInput {
+        font-size: 14px; /* Tamanho da fonte reduzido */
     }
 }

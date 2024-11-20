@@ -6,13 +6,24 @@
   align-items: center;
   justify-content: center;
   align-content: center;
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
   color: rgba(255, 255, 255, 0.63);
+  text-align: center; /* Garante que o texto seja centralizado por padrão */
+  font-size: 16px; /* Tamanho de fonte padrão */
 }
 
+/* Media Query para telas menores que 800px */
 @media screen and (max-width: 800px) {
   .container {
-    font-size: 10px;
-    text-align: center;
+    font-size: 12px; /* Tamanho da fonte reduzido para telas menores */
+    padding: 10px; /* Espaçamento extra para evitar que o conteúdo fique muito apertado */
+  }
 }
+
+/* Media Query para telas menores que 500px */
+@media screen and (max-width: 500px) {
+  .container {
+    font-size: 10px; /* Reduz ainda mais o tamanho da fonte para dispositivos pequenos */
+    padding: 8px; /* Ajuste no espaçamento para telas muito pequenas */
+  }
 }

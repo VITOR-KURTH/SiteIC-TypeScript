@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '../CssModules/Home.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import '../styles/Global.css'
 
 function App(): JSX.Element {
   return (
@@ -15,17 +14,15 @@ function App(): JSX.Element {
             propondo ferramentas para análises em Acústica de forma acessível.
           </p>
           <Link href={'/About'}>
-          <button className={styles.button}>
-            Saiba mais ▶
-          </button>
+            <button className={styles.button}>
+              Saiba mais ▶
+            </button>
           </Link>
         </div>
-        
-        
+
         <div className={styles.item}>
-        <Image src="/Rocket.svg" alt="foguete" width={500} height={500} className={styles.img} />
+          <Image src="/Rocket.svg" alt="foguete" width={500} height={500} className={styles.img} />
         </div>
-        
       </div>
     </div>
   );
