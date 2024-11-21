@@ -11,6 +11,7 @@
   font-weight: 400;
   font-size: 18px;
   padding: 0 60px;
+  
 }
 
 .navbar-left {
@@ -44,7 +45,7 @@
 }
 
 .navbar-links li a {
-  color: #fff; /* Mantém o texto branco na navbar */
+  color: #fff; 
   text-decoration: none;
 }
 

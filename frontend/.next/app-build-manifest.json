@@ -1,10 +1,10 @@
 {
   "pages": {
-    "/About/page": [
+    "/Contact/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/About/page.css",
-      "static/chunks/app/About/page.js"
+      "static/css/app/Contact/page.css",
+      "static/chunks/app/Contact/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -18,23 +18,17 @@
       "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
+    "/About/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/About/page.css",
+      "static/chunks/app/About/page.js"
+    ],
     "/Library/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/Library/page.css",
       "static/chunks/app/Library/page.js"
-    ],
-    "/Calculator/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/Calculator/page.css",
-      "static/chunks/app/Calculator/page.js"
-    ],
-    "/IA/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/IA/page.css",
-      "static/chunks/app/IA/page.js"
     ]
   }
 }

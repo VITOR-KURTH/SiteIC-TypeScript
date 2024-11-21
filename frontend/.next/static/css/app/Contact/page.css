@@ -1,0 +1,88 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/app/Contact/page.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+.page_main__XwOnR{
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+.page_container__dEHVn {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  margin-top: 5rem;
+  margin-bottom: 8rem;
+  align-content: center;
+}
+
+.page_titleMembers__obw99{
+  align-items: center;
+  margin-left: 3.3%;
+}
+
+.page_image__7CZEL {
+  text-align: center;
+  max-width: 200px;
+  max-height: 200px;
+}
+.page_title__a_Od9{
+  color: rgba(255, 255, 255, 0.63);
+  font-size: 72px;
+  text-align: left;
+  margin-left: 3%;
+}
+.page_container__dEHVn h3{
+  padding: 0px 10px 0px 20px;
+  color: rgba(255, 255, 255, 0.63);
+  text-align: center;
+}
+.page_member__pf5Se{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center ;
+  gap: 10px
+}
+.page_div__UXavp {
+  display: flex;
+  gap: 10px
+}
+
+.page_div__UXavp a{
+  background-color: #7900FF;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 800px){
+    .page_main__XwOnR{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .page_title__a_Od9{
+      font-size: 2rem;
+      align-self: flex-start
+    }
+    .page_container__dEHVn{
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin-top: 0px;
+      margin-bottom: 20px;
+      align-items: center;
+      justify-content: center;
+    
+    }
+    .page_image__7CZEL {
+      text-align: center;
+      max-width: 120px;
+      max-height: 120px;
+    }
+    .page_container__dEHVn h3{
+      padding: 0px 10px 0px 20px;
+      font-size: 18px;
+      text-align: center;
+    }
+}

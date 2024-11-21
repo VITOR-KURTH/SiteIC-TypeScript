@@ -45,7 +45,7 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; /* Inclui padding e border no tamanho total dos elementos */
+  box-sizing: border-box;
   scrollbar-width: thin;
   scroll-behavior: smooth;
   scrollbar-color: var(--secondary) var(--primary);
@@ -71,7 +71,7 @@
 
 html,
 body {
-  height: 100%; /* Garante que o body ocupe 100% da altura da tela */
+  height: 100%; 
   max-width: 100vw;
   overflow-x: hidden;
   background: linear-gradient(
@@ -87,7 +87,7 @@ body {
     #263ACB 133.23%
   );
   color: #fff;
-  font-family: 'Poppins', sans-serif; /* Adicionando a fonte aqui */
+  font-family: 'Poppins', sans-serif; 
 }
 
 a {
@@ -96,53 +96,52 @@ a {
 }
 
 .container {
-  max-width: 1366px; /* Define a largura máxima da container */
-  min-height: 100vh; /* Garante que ocupe toda a altura do viewport */
-  margin: 0 auto; /* Centraliza horizontalmente */
+  max-width: 1366px; 
+  min-height: 100vh;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centraliza verticalmente */
-  align-items: center; /* Centraliza horizontalmente */
-  padding: 0 20px; /* Padding lateral */
+  justify-content: center;
+  align-items: center; 
+  padding: 0 20px; 
 }
 
 .elipse {
   position: fixed;
-  top: 20px; /* Ajuste a posição como necessário */
-  left: 20px; /* Ajuste a posição como necessário */
+  top: 20px; 
+  left: 20px; 
   z-index: 1;
-  width: 150px; /* Tamanho inicial */
-  height: 150px; /* Tamanho inicial */
-  background: var(--secondary); /* Adicionando fundo à elipse */
-  border-radius: 50%; /* Garantindo que a elipse seja circular */
-}
+  width: 150px;
+  height: 150px;
+  background: var(--secondary);
+  border-radius: 50%; 
 
 @media screen and (max-width: 800px) {
   ::-webkit-scrollbar {
-    width: 0; /* Remove a largura da barra de rolagem em dispositivos pequenos */
+    width: 0; 
   }
 
   .container {
-    padding: 0 30px; /* Reduz a margem lateral para dispositivos menores */
+    padding: 0 30px; 
   }
 
   .elipse {
-    width: 100px; /* Reduz a largura da elipse em telas pequenas */
-    height: 100px; /* Reduz a altura da elipse */
+    width: 100px;
+    height: 100px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .container {
-    padding: 0 15px; /* Margem lateral menor em telas muito pequenas */
+    padding: 0 15px; 
   }
 
   .elipse {
-    width: 80px; /* Ainda menor em telas de smartphones */
+    width: 80px; 
     height: 80px;
   }
 }
-
+}
 /*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/Components/navbar/Navbar.module.css ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************/
@@ -159,6 +158,7 @@ a {
   font-weight: 400;
   font-size: 18px;
   padding: 0 60px;
+  
 }
 
 .Navbar_navbar-left__ZGJJs {
@@ -192,7 +192,7 @@ a {
 }
 
 .Navbar_navbar-links__R5Z4Z li a {
-  color: #fff; /* Mantém o texto branco na navbar */
+  color: #fff; 
   text-decoration: none;
 }
 

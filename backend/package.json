@@ -5,15 +5,18 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@fastify/cors": "^9.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
+    "nodemon": "^3.1.7",
     "postgres": "^3.4.4"
   },
   "description": ""
