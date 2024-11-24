@@ -1,0 +1,104 @@
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/app/Perfil/Perfil.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.Perfil_container__Dr2Ft {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    padding: 0 60px;
+  }
+  
+  .Perfil_item1__FX1pN {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    margin-bottom: 10%;
+    margin-left: 30%;
+  }
+  
+  .Perfil_container1__sevcu {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    padding: 20px;
+  }
+  
+  .Perfil_title__TFfdh {
+    font-size: 1.7rem;
+    text-align: center;
+    color: #ffffffee;
+    margin-top: 1rem;
+  }
+  
+  .Perfil_containerCadastro__2WkGa {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #45189200;
+    font-family: 'Poppins';
+    border-width: 1px;
+    border-style: solid;
+    border-color: #451892;
+    background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
+    border-radius: 8px;
+  
+  }
+  
+  .Perfil_input__F1svu {
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #ffffffc6;
+    border-style: hidden;
+    font-size: 20px;
+    padding-left: 16px;
+    color: #000000;
+  }
+  
+  
+  .Perfil_inputContainer__SLHH6 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 2.7em 5.6em;
+  }
+  
+  
+  .Perfil_buttonContainer__ufnDX {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .Perfil_button__mW3qL {
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+  }
+  
+  .Perfil_button__mW3qL:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .Perfil_nomes__w3_Sv{
+    font-size: 20px;
+    color: white;
+  }
+
+  .Perfil_emailUsuario__JrKat{
+    font-size: 20px;
+    color: white;
+    background-color: #120234;
+    padding: 10px;
+    border-radius: 10px;
+  }

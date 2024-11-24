@@ -1,10 +1,10 @@
 {
   "pages": {
-    "/Contact/page": [
+    "/Cadastro/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/Contact/page.css",
-      "static/chunks/app/Contact/page.js"
+      "static/css/app/Cadastro/page.css",
+      "static/chunks/app/Cadastro/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -12,23 +12,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
+    "/Perfil/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
-    "/About/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/About/page.css",
-      "static/chunks/app/About/page.js"
-    ],
-    "/Library/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/Library/page.css",
-      "static/chunks/app/Library/page.js"
+      "static/css/app/Perfil/page.css",
+      "static/chunks/app/Perfil/page.js"
     ]
   }
 }

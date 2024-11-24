@@ -1,5 +1,6 @@
 'use client'
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useRouter } from 'next/navigation'; // Importa o hook para redirecionamento
 import styles from './page.module.css';
 import '../../styles/Global.css';
 import Image from 'next/image';
@@ -13,78 +14,44 @@ interface Usuario {
 }
 
 const Cadastro: React.FC = () => {
-  const [usuarios, setUsuarios] = useState<Usuario[]>([]); // Lista de usuários
   const [formData, setFormData] = useState<Usuario>({
     email: '',
     nome: '',
     senha: '',
   });
-  const [isEditing, setIsEditing] = useState(false); // Controla se estamos editando ou criando
-
-  useEffect(() => {
-    fetchUsuarios();
-  }, []);
-
-  const fetchUsuarios = async () => {
-    try {
-      const response = await axios.get<Usuario[]>('http://localhost:3000/usuarios');
-      setUsuarios(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [isEditing, setIsEditing] = useState(false);
+  const router = useRouter(); // Instancia o hook para redirecionamento
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleCreateUsuarios = async (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/usuarios', formData);
+      if (isEditing) {
+        const response = await axios.put(`http://localhost:3333/usuarios/${formData.email}`, formData);
+        alert(response.data.message || 'Usuário atualizado com sucesso!');
+        setIsEditing(false);
+      } else {
+        const response = await axios.post('http://localhost:3333/usuarios', formData);
+        alert(response.data.message || 'Usuário cadastrado com sucesso!');
+        router.push('/Perfil'); // Redireciona para a página de Perfil após o cadastro
+      }
       setFormData({
         email: '',
         nome: '',
         senha: '',
       });
-      fetchUsuarios();
-    } catch (error) {
-      console.error(error);
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        // Caso seja um erro do Axios, trate o erro da resposta
+        alert(error.response?.data.error || 'Erro ao processar a solicitação.');
+      } else {
+        // Caso seja um erro genérico
+        alert('Erro inesperado. Por favor, tente novamente.');
+      }
     }
-  };
-
-  const handleUpdateUsuarios = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      await axios.put(`http://localhost:3000/usuarios/${formData.email}`, formData);
-      setFormData({
-        email: '',
-        nome: '',
-        senha: '',
-      });
-      setIsEditing(false);
-      fetchUsuarios();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleDeleteUsuarios = async (email: string) => {
-    try {
-      await axios.delete(`http://localhost:3000/usuarios/${email}`);
-      fetchUsuarios();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleEditUsuario = (usuario: Usuario) => {
-    setFormData({
-      email: usuario.email,
-      nome: usuario.nome,
-      senha: usuario.senha,
-    });
-    setIsEditing(true);
   };
 
   return (
@@ -111,7 +78,7 @@ const Cadastro: React.FC = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              disabled={isEditing} // Desabilita o email durante a edição
+              disabled={isEditing}
             />
             <input
               className={styles.input}
@@ -123,7 +90,7 @@ const Cadastro: React.FC = () => {
             />
           </div>
           <div className={styles.buttonContainer}>
-            <button className={styles.button} onClick={handleCreateUsuarios}>
+            <button className={styles.button} onClick={handleSubmit}>
               {isEditing ? 'Atualizar' : 'Cadastrar'}
             </button>
             <Link href="/Login" passHref>

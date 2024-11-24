@@ -5,67 +5,101 @@ import { UsuariosAll } from './database-postgres.js';
 const server = fastify();
 const databasePostgres = new UsuariosAll();
 
-// CORS
+// Configuração do CORS
 server.register(cors, {
     origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
 });
 
-// CREATE
+// Rota para criar um novo usuário
 server.post('/usuarios', async (request, reply) => {
     const body = request.body;
-    console.log(body);
 
-    let error = {};
+    // Validação de campos obrigatórios
+    if (!body.nome || !body.email || !body.senha) {
+        const errors = {};
+        if (!body.nome) errors.nome = 'Faltou o nome.';
+        if (!body.email) errors.email = 'Faltou o e-mail.';
+        if (!body.senha) errors.senha = 'Faltou a senha.';
+        return reply.status(400).send({ error: 'Campos obrigatórios faltando.', detalhes: errors });
+    }
 
-    if (!body.nome) error.nome = 'Faltou o nome';
+    try {
+        await databasePostgres.createUsuario(body);
+        return reply.status(201).send({ message: 'Usuário criado com sucesso!' });
+    } catch (error) {
+        console.error('Erro ao criar usuário:', error);
 
-    if (!body.senha) error.senha = 'Faltou a senha';
-    
-    if (!body.email) error.email = 'Faltou o email';
+        if (error.message.includes('E-mail já está em uso')) {
+            return reply.status(400).send({ error: 'O e-mail já está cadastrado. Por favor, use outro.' });
+        }
 
-    if (Object.keys(error).length === 0) {
-        await databasePostgres.createUsuarios(body);
-        return reply.status(201).send('Executado com sucesso');
-    } else {
-        return reply.status(400).send(error);
+        return reply.status(500).send({ error: 'Erro interno ao criar usuário.' });
     }
 });
 
-// READ
-server.get('/usuarios', async () => {
-    const users = await databasePostgres.listUsuarios();
-    return users;
+// Rota para listar todos os usuários
+server.get('/usuarios', async (request, reply) => {
+    try {
+        const usuarios = await databasePostgres.listUsuarios();
+        return reply.status(200).send(usuarios);
+    } catch (error) {
+        console.error('Erro ao listar usuários:', error);
+        return reply.status(500).send({ error: 'Erro interno ao listar usuários.' });
+    }
 });
 
-// UPDATE
+// Rota para atualizar um usuário existente
 server.put('/usuarios/:id_usuario', async (request, reply) => {
-    const userID = request.params.id_usuario;
+    const { id_usuario } = request.params;
     const body = request.body;
 
-    let error = {};
+    // Validação de campos obrigatórios
+    if (!body.nome || !body.email || !body.senha) {
+        const errors = {};
+        if (!body.nome) errors.nome = 'Faltou o nome.';
+        if (!body.email) errors.email = 'Faltou o e-mail.';
+        if (!body.senha) errors.senha = 'Faltou a senha.';
+        return reply.status(400).send({ error: 'Campos obrigatórios faltando.', detalhes: errors });
+    }
 
-    if (!body.nome) error.nome = 'Faltou o nome';
-    if (!body.senha) error.senha = 'Faltou a senha';
-    if (!body.email) error.email = 'Faltou o email';
-    if (!userID) error.userID = 'Faltou o ID';
+    try {
+        await databasePostgres.updateUsuarios(id_usuario, body);
+        return reply.status(200).send({ message: 'Usuário atualizado com sucesso!' });
+    } catch (error) {
+        console.error('Erro ao atualizar usuário:', error);
 
-    if (Object.keys(error).length === 0) {
-        await databasePostgres.updateUsuarios(userID, body);
-        return reply.status(200).send('Usuário atualizado com sucesso');
-    } else {
-        return reply.status(400).send(error);
+        if (error.message.includes('E-mail já está em uso')) {
+            return reply.status(400).send({ error: 'O e-mail já está cadastrado. Por favor, use outro.' });
+        }
+
+        if (error.message.includes('Usuário não encontrado')) {
+            return reply.status(404).send({ error: 'Usuário não encontrado para atualização.' });
+        }
+
+        return reply.status(500).send({ error: 'Erro interno ao atualizar usuário.' });
     }
 });
 
-// DELETE
+// Rota para excluir um usuário
 server.delete('/usuarios/:id_usuario', async (request, reply) => {
-    const userID = request.params.id_usuario;
-    await databasePostgres.deleteUsuarios(userID);
-    return reply.status(204).send();
+    const { id_usuario } = request.params;
+
+    try {
+        await databasePostgres.deleteUsuarios(id_usuario);
+        return reply.status(204).send();
+    } catch (error) {
+        console.error('Erro ao excluir usuário:', error);
+
+        if (error.message.includes('Usuário não encontrado')) {
+            return reply.status(404).send({ error: 'Usuário não encontrado para exclusão.' });
+        }
+
+        return reply.status(500).send({ error: 'Erro interno ao excluir usuário.' });
+    }
 });
 
-// Iniciar servidor
+// Inicia o servidor
 server.listen({ port: 3333 }, (err) => {
     if (err) {
         console.error(err);
