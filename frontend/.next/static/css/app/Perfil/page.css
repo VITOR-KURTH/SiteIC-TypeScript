@@ -1,3 +1,114 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/styles/Global.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+:root {
+  --primary: #34008C;
+  --secondary: #7900FF;
+  --tertiary: #8665CD;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--tertiary);
+}
+
+html,
+body {
+  height: 100%; 
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: linear-gradient(
+    112deg,
+    #2242DA -7.38%,
+    #451892 -1.58%,
+    #2F0E6B 13.55%,
+    #1D064B 26.57%,
+    #14023B 40.26%,
+    #170341 57.22%,
+    #1E074D 69.33%,
+    #310F6E 90.72%,
+    #263ACB 133.23%
+  );
+  color: #fff;
+  font-family: 'Poppins', sans-serif; 
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 1366px; 
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 0 20px; 
+}
+
+.elipse {
+  position: fixed;
+  top: 20px; 
+  left: 20px; 
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  background: var(--secondary);
+  border-radius: 50%; 
+
+@media screen and (max-width: 800px) {
+  ::-webkit-scrollbar {
+    width: 0; 
+  }
+
+  .container {
+    padding: 0 30px; 
+  }
+
+  .elipse {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    padding: 0 15px; 
+  }
+
+  .elipse {
+    width: 80px; 
+    height: 80px;
+  }
+}
+}
 /*!****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/app/Perfil/Perfil.module.css ***!
   \****************************************************************************************************************************************************************************************************************************************************************************/
@@ -7,7 +118,7 @@
     gap: 100px;
     padding: 0 60px;
   }
-  
+
   .Perfil_item1__FX1pN {
     flex: 1 1;
     display: flex;
@@ -16,21 +127,21 @@
     margin-bottom: 10%;
     margin-left: 30%;
   }
-  
+
   .Perfil_container1__sevcu {
     display: flex;
     align-items: center;
     gap: 100px;
     padding: 20px;
   }
-  
+
   .Perfil_title__TFfdh {
     font-size: 1.7rem;
     text-align: center;
     color: #ffffffee;
     margin-top: 1rem;
   }
-  
+
   .Perfil_containerCadastro__2WkGa {
     min-height: 100%;
     display: flex;
@@ -44,9 +155,9 @@
     border-color: #451892;
     background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
     border-radius: 8px;
-  
+
   }
-  
+
   .Perfil_input__F1svu {
     width: 300px;
     height: 50px;
@@ -57,38 +168,38 @@
     padding-left: 16px;
     color: #000000;
   }
-  
-  
+
+
   .Perfil_inputContainer__SLHH6 {
     display: flex;
     flex-direction: column;
     gap: 15px;
     padding: 2.7em 5.6em;
   }
-  
-  
+
+
   .Perfil_buttonContainer__ufnDX {
     display: flex;
     gap: 20px;
   }
-  
+
   .Perfil_button__mW3qL {
     width: 100px;
     height: 40px;
     border: none;
     border-radius: 8px;
-    background-color: #007bff;
+    background-color: #ff0000;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
     margin-bottom: 15px;
   }
-  
+
   .Perfil_button__mW3qL:hover {
     background-color: #0056b3;
   }
-  
+
 
   .Perfil_nomes__w3_Sv{
     font-size: 20px;
@@ -102,3 +213,4 @@
     padding: 10px;
     border-radius: 10px;
   }
+

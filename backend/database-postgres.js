@@ -1,6 +1,12 @@
 import { sql } from './db.js';
 
 export class UsuariosAll {
+  //lista os usuários existentes
+  async listUsuarios() {
+    const usuarios = await sql`select * from usuarios`;
+    return usuarios;
+  }
+
   // Verifica se o email já existe no banco de dados
   async emailExists(email) {
     try {
@@ -67,7 +73,16 @@ export class UsuariosAll {
     }
   }
 
-  // Autentica um usuário pelo email e senha
+  async getUsuarioById(id) {
+    try {
+        const [usuario] = await sql`SELECT id_usuario, nome_usuario, email_usuario FROM usuarios WHERE id_usuario = ${id}`;
+        return usuario || null;
+    } catch (error) {
+        console.error('Erro ao buscar usuário por ID:', error);
+        throw new Error('Erro ao buscar usuário.');
+    }
+}
+
 async authenticateUsuario(email, senha) {
   try {
       const [usuario] = await sql`
@@ -81,6 +96,8 @@ async authenticateUsuario(email, senha) {
       throw new Error('Erro ao autenticar usuário.');
   }
 }
+
+
 
 
 }

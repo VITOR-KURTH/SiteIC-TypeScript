@@ -12,30 +12,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/IA/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/IA/page.css",
-      "static/chunks/app/IA/page.js"
-    ],
-    "/About/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/About/page.css",
-      "static/chunks/app/About/page.js"
-    ],
-    "/Library/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/Library/page.css",
-      "static/chunks/app/Library/page.js"
-    ],
-    "/chapters/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/chapters/[id]/page.css",
-      "static/chunks/app/chapters/[id]/page.js"
-    ],
     "/Cadastro/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -48,11 +24,41 @@
       "static/css/app/Perfil/page.css",
       "static/chunks/app/Perfil/page.js"
     ],
+    "/Login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Login/page.css",
+      "static/chunks/app/Login/page.js"
+    ],
     "/Calculator/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/Calculator/page.css",
       "static/chunks/app/Calculator/page.js"
+    ],
+    "/Library/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Library/page.css",
+      "static/chunks/app/Library/page.js"
+    ],
+    "/About/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/About/page.css",
+      "static/chunks/app/About/page.js"
+    ],
+    "/Contact/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Contact/page.css",
+      "static/chunks/app/Contact/page.js"
+    ],
+    "/IA/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/IA/page.css",
+      "static/chunks/app/IA/page.js"
     ]
   }
 }

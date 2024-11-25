@@ -48,7 +48,7 @@ const Cadastro: React.FC = () => {
       } else {
         const response = await axios.post('http://localhost:3333/usuarios', formData);
         alert(response.data.message || 'Usuário cadastrado com sucesso!');
-        router.push('/Perfil'); // Redireciona para a página de Perfil após o cadastro
+        router.push('/Login'); // Agora redireciona para a página de Login após o cadastro
       }
       setFormData({
         email: '',

@@ -1,9 +1,12 @@
 import { fastify } from 'fastify';
 import cors from '@fastify/cors';
+import jwt from 'jsonwebtoken';
 import { UsuariosAll } from './database-postgres.js';
 
 const server = fastify();
 const databasePostgres = new UsuariosAll();
+
+const JWT_SECRET = 'sua_chave_super_segura'; // Mantenha isso seguro!
 
 // Configuração do CORS
 server.register(cors, {
@@ -11,11 +14,22 @@ server.register(cors, {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 });
 
+// Middleware para autenticação
+const authenticate = async (request, reply) => {
+    try {
+        const token = request.headers.authorization?.split(' ')[1];
+        if (!token) throw new Error('Token ausente.');
+        const decoded = jwt.verify(token, JWT_SECRET);
+        request.user = decoded; // Adiciona os dados do usuário autenticado à requisição
+    } catch (error) {
+        return reply.status(401).send({ error: 'Acesso negado: token inválido ou ausente.' });
+    }
+};
+
 // Rota para criar um novo usuário
 server.post('/usuarios', async (request, reply) => {
     const body = request.body;
 
-    // Validação de campos obrigatórios
     if (!body.nome || !body.email || !body.senha) {
         const errors = {};
         if (!body.nome) errors.nome = 'Faltou o nome.';
@@ -45,16 +59,15 @@ server.get('/usuarios', async (request, reply) => {
         return reply.status(200).send(usuarios);
     } catch (error) {
         console.error('Erro ao listar usuários:', error);
-        return reply.status(500).send({ error: 'Erro interno ao listar usuários.' });
+        reply.status(500).send({ error: 'Erro interno ao listar usuários.' });
     }
 });
 
 // Rota para atualizar um usuário existente
-server.put('/usuarios/:id_usuario', async (request, reply) => {
+server.put('/usuarios/:id_usuario', { preHandler: authenticate }, async (request, reply) => {
     const { id_usuario } = request.params;
     const body = request.body;
 
-    // Validação de campos obrigatórios
     if (!body.nome || !body.email || !body.senha) {
         const errors = {};
         if (!body.nome) errors.nome = 'Faltou o nome.';
@@ -82,7 +95,7 @@ server.put('/usuarios/:id_usuario', async (request, reply) => {
 });
 
 // Rota para excluir um usuário
-server.delete('/usuarios/:id_usuario', async (request, reply) => {
+server.delete('/usuarios/:id_usuario', { preHandler: authenticate }, async (request, reply) => {
     const { id_usuario } = request.params;
 
     try {
@@ -103,7 +116,6 @@ server.delete('/usuarios/:id_usuario', async (request, reply) => {
 server.post('/login', async (request, reply) => {
     const { email, senha } = request.body;
 
-    // Validação de campos obrigatórios
     if (!email || !senha) {
         const errors = {};
         if (!email) errors.email = 'Faltou o e-mail.';
@@ -117,13 +129,33 @@ server.post('/login', async (request, reply) => {
             return reply.status(401).send({ error: 'Credenciais inválidas.' });
         }
 
-        return reply.status(200).send({ message: 'Login bem-sucedido!', usuario });
+        // Gerar token JWT
+        const token = jwt.sign(
+            { id: usuario.id_usuario, email: usuario.email_usuario },
+            JWT_SECRET,
+            { expiresIn: '1h' }
+        );
+
+        return reply.status(200).send({ message: 'Login bem-sucedido!', token });
     } catch (error) {
         console.error('Erro ao autenticar usuário:', error);
         return reply.status(500).send({ error: 'Erro interno ao autenticar usuário.' });
     }
 });
 
+// Rota para obter informações do perfil
+server.get('/perfil', { preHandler: authenticate }, async (request, reply) => {
+    try {
+        const usuario = await databasePostgres.getUsuarioById(request.user.id);
+        if (!usuario) {
+            return reply.status(404).send({ error: 'Usuário não encontrado.' });
+        }
+        return reply.status(200).send(usuario);
+    } catch (error) {
+        console.error('Erro ao buscar informações do perfil:', error);
+        return reply.status(500).send({ error: 'Erro interno ao buscar informações do perfil.' });
+    }
+});
 
 // Inicia o servidor
 server.listen({ port: 3333 }, (err) => {

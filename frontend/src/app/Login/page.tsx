@@ -31,6 +31,11 @@ const Login = () => {
 
     try {
       const response = await axios.post('http://localhost:3333/login', formData);
+      const { token } = response.data;
+
+      // Armazena o token no localStorage
+      localStorage.setItem('authToken', token);
+
       alert(response.data.message || 'Login bem-sucedido!');
       router.push('/Perfil'); // Redireciona para a página de perfil
     } catch (error: unknown) {
