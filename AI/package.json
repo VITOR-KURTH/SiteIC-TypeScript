@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@fastify/multipart": "^9.0.1",
+    "multer": "^1.4.5-lts.1"
+  }
+}

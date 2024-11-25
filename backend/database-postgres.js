@@ -66,4 +66,23 @@ export class UsuariosAll {
       throw error;
     }
   }
+
+  // Autentica um usuário pelo email e senha
+async authenticateUsuario(email, senha) {
+  try {
+      const [usuario] = await sql`
+          SELECT * FROM usuarios
+          WHERE email_usuario = ${email} AND senha_usuario = ${senha}
+      `;
+
+      return usuario || null;
+  } catch (error) {
+      console.error('Erro ao autenticar usuário:', error);
+      throw new Error('Erro ao autenticar usuário.');
+  }
 }
+
+
+}
+
+

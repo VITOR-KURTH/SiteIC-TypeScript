@@ -14,11 +14,9 @@ class LineZone:
         self.crossed_ids = set()  # Para rastrear IDs que já cruzaram a linha
 
     def check_crossing(self, box_center, object_id):
-        # Apenas conta o objeto se ele ainda não cruzou a linha antes
         if box_center[1] >= self.start[1] and object_id not in self.crossed_ids:
-            print(f"Objeto {object_id} cruzou a linha na posição {box_center}.")
             self.counter += 1
-            self.crossed_ids.add(object_id)  # Marcar o ID como tendo cruzado a linha
+            self.crossed_ids.add(object_id)
             return True
         return False
 
@@ -40,7 +38,6 @@ def parse_arguments() -> argparse.Namespace:
     return parser.parse_args()
 
 def main(args):
-    # Encontre o vídeo automaticamente se --video não for fornecido
     if not args.video:
         print("Nenhum vídeo especificado. Procurando vídeo automaticamente em './video/video.mp4'...")
         video_path = find_video_in_directory()
@@ -50,59 +47,68 @@ def main(args):
         print(f"Vídeo encontrado: {video_path}")
         args.video = video_path
 
-    model = YOLO(args.model_path)
-    CLASS_NAMES_DICT = model.names
-    model.fuse()
+    try:
+        model = YOLO(args.model_path)
+        CLASS_NAMES_DICT = model.names
+        model.fuse()
+    except Exception as e:
+        print(f"Erro ao carregar o modelo: {e}")
+        return
 
     tracker = sv.ByteTrack()
 
-    # Defina os pontos de início e fim da linha
-    START = (0, 200)   # Coordenada y da linha
-    END = (600, 200)   # Coordenada y da linha
+    START = (0, 200)  
+    END = (600, 200)  
     line_counter = LineZone(start=START, end=END)
 
-    # Substituição do BoundingBoxAnnotator por BoxAnnotator conforme aviso de depreciação
+    # Inicializar contagem por classe
+    class_counts = {class_name: 0 for class_name in CLASS_NAMES_DICT.values()}
+
     box_annotator = sv.BoxAnnotator(thickness=4)
     label_annotator = sv.LabelAnnotator()
 
     video_info = sv.VideoInfo.from_video_path(args.video)
     frame_generator = sv.get_video_frames_generator(args.video)
 
-    # Configuração para salvar o vídeo na pasta './video/'
-    output_video_path = "./video/output_video.mp4"  # Defina o caminho na pasta video
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")  # Codec de vídeo
+    output_video_path = "./video/output_video.mp4"
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
     output_video = cv2.VideoWriter(output_video_path, fourcc, 30, (video_info.width, video_info.height))
 
-    for frame in frame_generator:
-        result = model(frame)[0]
-        detections = sv.Detections.from_ultralytics(result)
-        detections = tracker.update_with_detections(detections)
+    try:
+        for frame in frame_generator:
+            result = model(frame)[0]
+            detections = sv.Detections.from_ultralytics(result)
+            detections = tracker.update_with_detections(detections)
 
-        labels = [f"#{tracker_id}" for tracker_id in detections.tracker_id]
+            labels = [f"#{tracker_id}" for tracker_id in detections.tracker_id]
 
-        for detection, tracker_id in zip(detections, labels):
-            if tracker_id is not None and isinstance(detection[0], np.ndarray):  # Verifique se o objeto tem um ID e coordenadas
-                x1, y1, x2, y2 = detection[0]
-                
-                # Verifique se todas as coordenadas são válidas
-                if all(coord is not None for coord in (x1, y1, x2, y2)):
-                    box_center = ((x1 + x2) / 2, (y1 + y2) / 2)
-                    line_counter.check_crossing(box_center, tracker_id)
-            else:
-                print("Detecção inválida ou incompleta encontrada:", detection)
+            for detection, tracker_id, class_id in zip(detections, labels, detections.class_id):
+                if tracker_id is not None and isinstance(detection[0], np.ndarray):
+                    x1, y1, x2, y2 = detection[0]
+                    if all(coord is not None for coord in (x1, y1, x2, y2)):
+                        box_center = ((x1 + x2) / 2, (y1 + y2) / 2)
+                        if line_counter.check_crossing(box_center, tracker_id):
+                            # Incrementar a contagem da classe correspondente somente após cruzar
+                            class_name = CLASS_NAMES_DICT.get(class_id, "Desconhecido")
+                            if class_name in class_counts:
+                                class_counts[class_name] += 1
 
-        annotated_frame = box_annotator.annotate(scene=frame.copy(), detections=detections)
-        annotated_frame = label_annotator.annotate(scene=annotated_frame, detections=detections, labels=labels)
+            annotated_frame = box_annotator.annotate(scene=frame.copy(), detections=detections)
+            annotated_frame = label_annotator.annotate(scene=annotated_frame, detections=detections, labels=labels)
 
-        # Exibir contador no quadro
-        cv2.putText(annotated_frame, f"Count: {line_counter.counter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+            cv2.putText(annotated_frame, f"Count: {line_counter.counter}", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
-        # Salvar o frame anotado no vídeo de saída
-        output_video.write(annotated_frame)
+            output_video.write(annotated_frame)
 
-    # Libere o vídeo de saída e feche as janelas
-    output_video.release()
-    print("Contagem final:", line_counter.counter)
+        print("Processamento concluído.")
+        print(f"Contagem Final: {line_counter.counter}")
+        print("Contagem por Tipo de Veículo:")
+        for class_name, count in class_counts.items():
+            print(f"- {class_name}: {count}")
+    except Exception as e:
+        print(f"Erro durante o processamento do vídeo: {e}")
+    finally:
+        output_video.release()
 
 if __name__ == "__main__":
     args = parse_arguments()

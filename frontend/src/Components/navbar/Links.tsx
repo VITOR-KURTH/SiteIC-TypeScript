@@ -1,3 +1,4 @@
+import React from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
@@ -8,6 +9,6 @@ export const links = [
   { id: 4, title: 'Calculadora', url: '/Calculator' },
   { id: 5, title: 'Inteligência Artificial', url: '/IA' },
   { id: 6, title: 'Contato', url: '/Contact' },
-  {id: 7, title: <AccountCircleIcon style={{ fontSize: 55} }/>, url: '/Perfil'}
+  {id: 7, title: <AccountCircleIcon style={{ fontSize: 55} }/>, url: '/Cadastro'}
 ];
 

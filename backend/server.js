@@ -99,6 +99,32 @@ server.delete('/usuarios/:id_usuario', async (request, reply) => {
     }
 });
 
+// Rota para autenticar um usuário
+server.post('/login', async (request, reply) => {
+    const { email, senha } = request.body;
+
+    // Validação de campos obrigatórios
+    if (!email || !senha) {
+        const errors = {};
+        if (!email) errors.email = 'Faltou o e-mail.';
+        if (!senha) errors.senha = 'Faltou a senha.';
+        return reply.status(400).send({ error: 'Campos obrigatórios faltando.', detalhes: errors });
+    }
+
+    try {
+        const usuario = await databasePostgres.authenticateUsuario(email, senha);
+        if (!usuario) {
+            return reply.status(401).send({ error: 'Credenciais inválidas.' });
+        }
+
+        return reply.status(200).send({ message: 'Login bem-sucedido!', usuario });
+    } catch (error) {
+        console.error('Erro ao autenticar usuário:', error);
+        return reply.status(500).send({ error: 'Erro interno ao autenticar usuário.' });
+    }
+});
+
+
 // Inicia o servidor
 server.listen({ port: 3333 }, (err) => {
     if (err) {

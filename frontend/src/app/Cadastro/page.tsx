@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation'; // Importa o hook para redirecionamento
 import styles from './page.module.css';
@@ -28,6 +28,18 @@ const Cadastro: React.FC = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Validações de campos
+    if (!formData.nome || !formData.email || !formData.senha) {
+      alert('Todos os campos devem ser preenchidos.');
+      return;
+    }
+
+    if (!formData.email.includes('@') || formData.email.endsWith('@')) {
+      alert('Digite um e-mail válido.');
+      return;
+    }
+
     try {
       if (isEditing) {
         const response = await axios.put(`http://localhost:3333/usuarios/${formData.email}`, formData);

@@ -2,7 +2,7 @@
 
 .main {
     display: flex;
-    align-items: center;
+    align-items: row;
     justify-content: center;
 }
 
@@ -57,6 +57,7 @@
 }
 
 .item2Text {
+  margin-top: 44px;
     margin-bottom: 5px;
     font-size: 18px;
     font-weight: 400;
