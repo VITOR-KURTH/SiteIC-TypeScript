@@ -70,7 +70,7 @@ def main(args):
     video_info = sv.VideoInfo.from_video_path(args.video)
     frame_generator = sv.get_video_frames_generator(args.video)
 
-    output_video_path = "./AI/results/output_video.mp4"
+    output_video_path = "../results/output_video.mp4"
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
     output_video = cv2.VideoWriter(output_video_path, fourcc, 30, (video_info.width, video_info.height))
 
