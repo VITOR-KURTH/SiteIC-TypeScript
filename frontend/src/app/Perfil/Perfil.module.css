@@ -22,7 +22,7 @@
   }
 
   .title {
-    font-size: 1.7rem;
+    font-size: 2.8rem;
     text-align: center;
     color: #ffffffee;
     margin-top: 1rem;
@@ -41,7 +41,7 @@
     border-color: #451892;
     background: linear-gradient(to bottom, rgba(69, 24, 146, 0.44), #120234);
     border-radius: 8px;
-
+    width: 800px;
   }
 
   .input {
@@ -88,7 +88,7 @@
 
 
   .nomes{
-    font-size: 20px;
+    font-size: 25px;
     color: white;
   }
 
@@ -98,4 +98,19 @@
     background-color: #120234;
     padding: 10px;
     border-radius: 10px;
+
+  }
+
+
+  .infoBox {
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    color: white;
+  }
+
+  .info {
+    font-size: 25px;
+    color: #ffffff;
+    margin: 10px 0;
   }

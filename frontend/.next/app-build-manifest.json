@@ -12,12 +12,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/Cadastro/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/Cadastro/page.css",
-      "static/chunks/app/Cadastro/page.js"
-    ],
     "/Perfil/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -29,36 +23,6 @@
       "static/chunks/main-app.js",
       "static/css/app/Login/page.css",
       "static/chunks/app/Login/page.js"
-    ],
-    "/Calculator/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/Calculator/page.css",
-      "static/chunks/app/Calculator/page.js"
-    ],
-    "/Library/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/Library/page.css",
-      "static/chunks/app/Library/page.js"
-    ],
-    "/About/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/About/page.css",
-      "static/chunks/app/About/page.js"
-    ],
-    "/Contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/Contact/page.css",
-      "static/chunks/app/Contact/page.js"
-    ],
-    "/IA/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/IA/page.css",
-      "static/chunks/app/IA/page.js"
     ]
   }
 }

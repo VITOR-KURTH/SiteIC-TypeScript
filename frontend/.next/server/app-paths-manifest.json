@@ -1,9 +1,5 @@
 {
-  "/Cadastro/page": "app/Cadastro/page.js",
-  "/Perfil/page": "app/Perfil/page.js",
-  "/About/page": "app/About/page.js",
   "/Login/page": "app/Login/page.js",
-  "/IA/page": "app/IA/page.js",
-  "/Calculator/page": "app/Calculator/page.js",
-  "/Contact/page": "app/Contact/page.js"
+  "/page": "app/page.js",
+  "/Perfil/page": "app/Perfil/page.js"
 }

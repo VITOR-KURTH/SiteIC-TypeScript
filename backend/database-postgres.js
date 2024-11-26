@@ -1,4 +1,4 @@
-import { sql } from './db.js';
+import { sql } from "./db.js";
 
 export class UsuariosAll {
   //lista os usuários existentes
@@ -15,8 +15,8 @@ export class UsuariosAll {
       `;
       return result[0].count > 0;
     } catch (error) {
-      console.error('Erro ao verificar email:', error);
-      throw new Error('Erro ao verificar email');
+      console.error("Erro ao verificar email:", error);
+      throw new Error("Erro ao verificar email");
     }
   }
 
@@ -26,7 +26,7 @@ export class UsuariosAll {
       const { nome, email, senha } = usuario;
 
       if (await this.emailExists(email)) {
-        throw new Error('E-mail já está em uso');
+        throw new Error("E-mail já está em uso");
       }
 
       await sql`
@@ -34,7 +34,7 @@ export class UsuariosAll {
         VALUES (${nome}, ${email}, ${senha})
       `;
     } catch (error) {
-      console.error('Erro ao criar usuário:', error);
+      console.error("Erro ao criar usuário:", error);
       throw error;
     }
   }
@@ -49,11 +49,14 @@ export class UsuariosAll {
       `;
 
       if (!usuarioAtual.length) {
-        throw new Error('Usuário não encontrado');
+        throw new Error("Usuário não encontrado");
       }
 
-      if (usuarioAtual[0].email_usuario !== email && (await this.emailExists(email))) {
-        throw new Error('E-mail já está em uso');
+      if (
+        usuarioAtual[0].email_usuario !== email &&
+        (await this.emailExists(email))
+      ) {
+        throw new Error("E-mail já está em uso");
       }
 
       const result = await sql`
@@ -65,41 +68,36 @@ export class UsuariosAll {
       `;
 
       if (result.count === 0) {
-        throw new Error('Usuário não encontrado para atualização');
+        throw new Error("Usuário não encontrado para atualização");
       }
     } catch (error) {
-      console.error('Erro ao atualizar usuário:', error);
+      console.error("Erro ao atualizar usuário:", error);
       throw error;
     }
   }
 
   async getUsuarioById(id) {
     try {
-        const [usuario] = await sql`SELECT id_usuario, nome_usuario, email_usuario FROM usuarios WHERE id_usuario = ${id}`;
-        return usuario || null;
+      const [usuario] =
+        await sql`SELECT id_usuario, nome_usuario, email_usuario FROM usuarios WHERE id_usuario = ${id}`;
+      return usuario || null;
     } catch (error) {
-        console.error('Erro ao buscar usuário por ID:', error);
-        throw new Error('Erro ao buscar usuário.');
+      console.error("Erro ao buscar usuário por ID:", error);
+      throw new Error("Erro ao buscar usuário.");
     }
-}
+  }
 
-async authenticateUsuario(email, senha) {
-  try {
+  async authenticateUsuario(email, senha) {
+    try {
       const [usuario] = await sql`
           SELECT * FROM usuarios
           WHERE email_usuario = ${email} AND senha_usuario = ${senha}
       `;
 
       return usuario || null;
-  } catch (error) {
-      console.error('Erro ao autenticar usuário:', error);
-      throw new Error('Erro ao autenticar usuário.');
+    } catch (error) {
+      console.error("Erro ao autenticar usuário:", error);
+      throw new Error("Erro ao autenticar usuário.");
+    }
   }
 }
-
-
-
-
-}
-
-

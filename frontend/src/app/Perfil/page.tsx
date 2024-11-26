@@ -1,39 +1,31 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import '../../styles/Global.css';
-import styles from './Perfil.module.css';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import styles from './Perfil.module.css';
+import Image from 'next/image';
 
 const Perfil = () => {
-  const [usuario, setUsuario] = useState({ nome: '', email: '' });
+  const [usuario, setUsuario] = useState({ nome_usuario: '', email_usuario: '' });
   const router = useRouter();
 
   useEffect(() => {
     const fetchPerfil = async () => {
       const token = localStorage.getItem('authToken');
-
       if (!token) {
-        alert('Você precisa estar logado para acessar esta página.');
         router.push('/Login');
         return;
       }
 
       try {
         const response = await axios.get('http://localhost:3333/perfil', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
         setUsuario(response.data);
-      } catch (error) {
-        if (axios.isAxiosError(error) && error.response?.status === 401) {
-          alert('Sua sessão expirou. Por favor, faça login novamente.');
-          router.push('/Login');
-        } else {
-          alert('Erro ao carregar perfil.');
-        }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
+        alert('Erro ao carregar o perfil. Faça login novamente.');
+        router.push('/Login');
       }
     };
 
@@ -42,7 +34,6 @@ const Perfil = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
-    alert('Você saiu da conta.');
     router.push('/Login');
   };
 
@@ -50,22 +41,10 @@ const Perfil = () => {
     <div className={styles.container}>
       <div className={styles.container1}>
         <div className={styles.containerCadastro}>
-          <h1 className={styles.title}>Perfil</h1>
-          <div className={styles.inputContainer}>
-            <h2 className={styles.nomes}>Nome</h2>
-            <input
-              className={styles.input}
-              value={usuario.nome}
-              readOnly
-              type="text"
-            />
-            <h2 className={styles.nomes}>Email</h2>
-            <input
-              className={styles.input}
-              value={usuario.email}
-              readOnly
-              type="text"
-            />
+          <h1 className={styles.title}>Bem-vindo, {usuario.nome_usuario}!</h1>
+          <div className={styles.infoBox}>
+            <p className={styles.info}><strong>Nome:</strong> {usuario.nome_usuario || 'Carregando...'}</p>
+            <p className={styles.info}><strong>Email:</strong> {usuario.email_usuario || 'Carregando...'}</p>
           </div>
           <div className={styles.buttonContainer}>
             <button className={styles.button} onClick={handleLogout}>
@@ -74,14 +53,13 @@ const Perfil = () => {
           </div>
         </div>
         <div className={styles.item1}>
-          <Image
+        <Image
             src="/FotoPerfil.svg"
             width={500}
             height={500}
-            alt="FotoPerfil"
+            alt="Foto de Perfil"
             className={styles.img}
-          />
-        </div>
+          />        </div>
       </div>
     </div>
   );

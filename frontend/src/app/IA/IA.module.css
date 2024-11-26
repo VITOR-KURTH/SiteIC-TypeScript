@@ -1,16 +1,9 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .containerIA {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  text-align: left;
 }
 
 .containerVideo {
@@ -36,6 +29,8 @@
 
 .title1 {
   font-family: 'Poppins';
+  font-size: 1.8em;
+  color: #ffffff;
 }
 
 .title2 {
@@ -52,6 +47,7 @@
   background-color: #dadada;
   color: #000000;
   font-family: 'Poppins';
+  text-align: center;
   font-size: 1.4em;
   border-radius: 8px;
   display: flex;
@@ -65,5 +61,10 @@
 .btnVideo:hover {
   background-color: #b3b3b3;
   border-color: #545454;
-  transform: scale(1.2);
+  transform: scale(1.1);
+}
+
+/* Esconde o input padrão */
+.hiddenInput {
+  display: none;
 }

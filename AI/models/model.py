@@ -34,7 +34,7 @@ def find_video_in_directory(directory="./video"):
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Script de detecção e contagem de objetos com YOLOv8")
     parser.add_argument("--video", type=str, help="Caminho para o vídeo de entrada")
-    parser.add_argument("--model_path", type=str, default="./best.pt", help="Caminho para o modelo YOLOv8")
+    parser.add_argument("--model_path", type=str, default="./models/best.pt", help="Caminho para o modelo YOLOv8")
     return parser.parse_args()
 
 def main(args):
@@ -70,7 +70,7 @@ def main(args):
     video_info = sv.VideoInfo.from_video_path(args.video)
     frame_generator = sv.get_video_frames_generator(args.video)
 
-    output_video_path = "./video/output_video.mp4"
+    output_video_path = "./AI/results/output_video.mp4"
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
     output_video = cv2.VideoWriter(output_video_path, fourcc, 30, (video_info.width, video_info.height))
 

@@ -6,7 +6,7 @@ import { UsuariosAll } from './database-postgres.js';
 const server = fastify();
 const databasePostgres = new UsuariosAll();
 
-const JWT_SECRET = 'sua_chave_super_segura'; // Mantenha isso seguro!
+const JWT_SECRET = 'uma_chave_segura_qualquer'; // Isso que ser seguro
 
 // Configuração do CORS
 server.register(cors, {

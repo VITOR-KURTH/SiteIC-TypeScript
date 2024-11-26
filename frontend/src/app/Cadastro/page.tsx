@@ -19,6 +19,7 @@ const Cadastro: React.FC = () => {
     nome: '',
     senha: '',
   });
+  const [repeatPassword, setRepeatPassword] = useState<string>(''); // Estado para repetir senha
   const [isEditing, setIsEditing] = useState(false);
   const router = useRouter(); // Instancia o hook para redirecionamento
 
@@ -26,12 +27,21 @@ const Cadastro: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleRepeatPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setRepeatPassword(e.target.value); // Atualiza o estado da repetição de senha
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Validações de campos
-    if (!formData.nome || !formData.email || !formData.senha) {
+     // Validações de campos
+     if (!formData.nome || !formData.email || !formData.senha || !repeatPassword) {
       alert('Todos os campos devem ser preenchidos.');
+      return;
+    }
+
+    if (formData.senha !== repeatPassword) {
+      alert('As senhas não coincidem.');
       return;
     }
 
@@ -99,6 +109,13 @@ const Cadastro: React.FC = () => {
               name="senha"
               value={formData.senha}
               onChange={handleInputChange}
+            />
+            <input
+              className={styles.input}
+              placeholder="Repetir senha"
+              type="password"
+              value={repeatPassword}
+              onChange={handleRepeatPasswordChange} // Atualiza o estado de repetir senha
             />
           </div>
           <div className={styles.buttonContainer}>

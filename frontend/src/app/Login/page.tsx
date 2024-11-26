@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 import '../../styles/Global.css';
@@ -9,16 +9,33 @@ import axios from 'axios';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', senha: '' });
+  const [isLoading, setIsLoading] = useState(false); // Estado para mostrar carregamento
   const router = useRouter();
 
+  // Redireciona para o perfil se o usuário já estiver logado
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token JWT
+      const isExpired = Date.now() >= payload.exp * 1000; // Verifica se o token expirou
+      if (isExpired) {
+        localStorage.removeItem('authToken'); // Remove token expirado
+      } else {
+        router.push('/Perfil'); // Redireciona para o perfil
+      }
+    }
+  }, [router]);
+
+  // Captura os valores do formulário
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Submete os dados de login
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Validações
+    // Validações simples
     if (!formData.email || !formData.senha) {
       alert('Todos os campos devem ser preenchidos.');
       return;
@@ -29,11 +46,13 @@ const Login = () => {
       return;
     }
 
+    setIsLoading(true); // Ativa o estado de carregamento
+
     try {
       const response = await axios.post('http://localhost:3333/login', formData);
       const { token } = response.data;
 
-      // Armazena o token no localStorage
+      // Salva o token no localStorage
       localStorage.setItem('authToken', token);
 
       alert(response.data.message || 'Login bem-sucedido!');
@@ -44,6 +63,8 @@ const Login = () => {
       } else {
         alert('Erro inesperado. Por favor, tente novamente.');
       }
+    } finally {
+      setIsLoading(false); // Desativa o estado de carregamento
     }
   };
 
@@ -73,8 +94,8 @@ const Login = () => {
               onChange={handleInputChange}
             />
             <div className={styles.buttonContainer}>
-              <button className={styles.button} type="submit">
-                Entrar
+              <button className={styles.button} type="submit" disabled={isLoading}>
+                {isLoading ? 'Carregando...' : 'Entrar'}
               </button>
               <Link href="/Cadastro" passHref>
                 <button className={styles.button} type="button">
