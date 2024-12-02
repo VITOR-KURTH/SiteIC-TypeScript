@@ -9,11 +9,11 @@ const History = () => {
   <div className={styles.tempo}>
     <div className={styles.anoContainer}>
       <h2 className={styles.ano}>2022</h2>
-      <p className={styles.desc}>Primeiro ano do projeto.</p>
+      <p className={styles.desc}>Primeiro ano do projeto, artigo publicado em revista Qualis nível B1.</p>
     </div>
     <div className={styles.anoContainer}>
       <h2 className={styles.ano}>2023</h2>
-      <p className={styles.desc}>Segundo ano do projeto, com publicação de artigo em revista nacional, finalistas na FEBRACE.</p>
+      <p className={styles.desc}>Segundo ano do projeto, com segunda publicação de artigo em revista nacional, semi-finalistas na FEBRACE.</p>
     </div>
     <div className={styles.anoContainer}>
       <h2 className={styles.ano}>2024</h2>

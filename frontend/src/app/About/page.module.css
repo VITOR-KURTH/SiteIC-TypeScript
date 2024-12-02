@@ -62,11 +62,21 @@
   text-align: center;
 }
 
-.title {
+.title1 {
   color: #ffffffee;
   font-size: 72px;
   text-align: right;
   font-family: 'Poppins';
+
+}
+
+.title2 {
+  color: #ffffffee;
+  font-size: 72px;
+  text-align: right;
+  font-family: 'Poppins';
+  text-decoration: underline;
+  text-decoration-color: #EE3EC9;
 }
 
 .desc {
