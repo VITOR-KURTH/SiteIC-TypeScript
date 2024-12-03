@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
       <div className={styles['navbar-left']}>
         <Link href="/" legacyBehavior>
           <a className={styles['navbar-logo']}>
-            <Image src="/logo.svg" alt="Logo" width={140} height={140} />
+            <Image src="/logoIC.svg" alt="Logo" width={140} height={140} />
           </a>
         </Link>
       </div>
