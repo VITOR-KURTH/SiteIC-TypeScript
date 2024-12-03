@@ -54,12 +54,12 @@ const About = () => {
           </ul>
         </div>
         <div className={styles.containerImg}>
-          <Image
-            src="/Group.jpg"
-            width={590}
-            height={460}
-            alt="grupo"
-            className={styles.imgGroup}
+        <Image
+            src="/lamp.svg"
+            width={500}
+            height={500}
+            alt="cubos"
+            className={styles.img}
           />
         </div>
       </div>
