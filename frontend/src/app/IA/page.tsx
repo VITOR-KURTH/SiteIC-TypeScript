@@ -1,54 +1,70 @@
-"use client"; // Marcar como Client Component
+"use client";
 
 import React, { useState } from "react";
 import axios from "axios";
 import styles from './IA.module.css';
 
 const IA = () => {
-  // Estado para armazenar o arquivo selecionado pelo usuário
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [uploadMessage, setUploadMessage] = useState("");
+  const [processingMessage, setProcessingMessage] = useState("");
+  const [vehicleCounts, setVehicleCounts] = useState<{ [key: string]: number }>({});
+  const [totalVehicles, setTotalVehicles] = useState<number>(0);
+  const [heavyVehiclePercentage, setHeavyVehiclePercentage] = useState<number>(0);
 
-  // Estado para armazenar o link do vídeo processado pela IA
-  const [processedVideo, setProcessedVideo] = useState<string | null>(null);
-
-  // Função para capturar o arquivo selecionado pelo usuário no input
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      // Armazena o primeiro arquivo selecionado no estado `selectedFile`
       setSelectedFile(event.target.files[0]);
     }
   };
 
-  // Função para enviar o vídeo ao servidor para processamento
   const handleUpload = async () => {
-    // Verifica se o usuário selecionou um arquivo
     if (!selectedFile) {
-      alert('Por favor, selecione um vídeo.'); // Exibe alerta se nenhum arquivo foi selecionado
+      alert('Por favor, selecione um vídeo.');
       return;
     }
 
-    // Cria um formulário de dados para enviar o vídeo
     const formData = new FormData();
-    formData.append('video', selectedFile); // Adiciona o arquivo ao formulário com o campo 'video'
+    formData.append('video', selectedFile);
 
     try {
-      // Faz uma solicitação POST para o servidor enviar o vídeo
-      const response = await axios.post('http://localhost:3001/process-video', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }, // Define o cabeçalho como envio de formulário
-        responseType: 'blob', // Espera um arquivo (blob) como resposta
-        timeout: 60000, // Define um tempo limite de 60 segundos para a solicitação
+      setUploadMessage("Enviando vídeo...");
+      const uploadResponse = await axios.post('http://localhost:3001/upload-video', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        timeout: 60000,
       });
 
-      // Cria uma URL temporária para o vídeo processado retornado pelo servidor
-      const url = URL.createObjectURL(new Blob([response.data]));
-      setProcessedVideo(url); // Armazena o link do vídeo processado no estado
-    } catch (error) {
-      // Exibe erro no console e alerta o usuário
-      console.error('Erro ao enviar o vídeo:', error);
-      alert('Erro ao processar o vídeo. Tente novamente.');
-    }
-  };
+      setUploadMessage("✅ Vídeo enviado com sucesso!");
 
+      const filename = uploadResponse.data.filename;
+
+      setProcessingMessage("Processando vídeo... Isso pode levar alguns segundos.");
+
+      const processResponse = await axios.post('http://localhost:3001/process-video', {
+        filename: filename,
+      }, {
+        timeout: 600000,
+      });
+
+      const counts = processResponse.data.counts;
+      setVehicleCounts(counts);
+      setProcessingMessage("✅ Processamento concluído!");
+
+      const total = (Object.values(counts) as number[]).reduce((sum, value) => sum + value, 0);
+      setTotalVehicles(total);
+
+      const heavyClasses = ['caminhaog', 'caminhaop', 'onibus', 'van'];
+      const heavyCount = heavyClasses.reduce((sum, key) => sum + (counts[key] || 0), 0);
+      const heavyPercentage = total > 0 ? (heavyCount / total) * 100 : 0;
+      setHeavyVehiclePercentage(heavyPercentage);
+
+    } catch (error) {
+      console.error('Erro ao enviar ou processar o vídeo:', error);
+      setUploadMessage("Erro ao enviar ou processar o vídeo. Tente novamente.");
+    }
+  }; // ← FECHOU CERTO AQUI!
+
+  // AGORA PODE TER O RETURN NORMALMENTE
   return (
     <div className={styles.containerIA}>
       <h1 className={styles.title1}>Inteligência Artificial</h1>
@@ -66,13 +82,38 @@ const IA = () => {
             onChange={handleFileChange}
           />
           <button className={styles.btnVideo} onClick={handleUpload}>Enviar</button>
+
+          <p>{uploadMessage}</p>
+          <p>{processingMessage}</p>
+
+          {totalVehicles > 0 && (
+            <div className={styles.countsContainer}>
+              <h2 className={styles.countTitle}>Resultados da Contagem:</h2>
+              <ul className={styles.countList}>
+                {Object.entries(vehicleCounts)
+                  .filter(([_, count]) => count > 0)
+                  .map(([vehicle, count]) => (
+                    <li key={vehicle} className={styles.countItem}>
+                      {vehicle}: {count}
+                    </li>
+                ))}
+              </ul>
+              <p className={styles.summary}>🚗 Total de veículos: {totalVehicles}</p>
+              <p className={styles.summary}>🚚 Percentual de veículos pesados: {heavyVehiclePercentage.toFixed(2)}%</p>
+
+              {/* Botão de download do vídeo */}
+              <a
+                href="http://localhost:3001/download-video"
+                className={styles.downloadButton}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+              >
+                📥 Baixar Vídeo Processado
+              </a>
+            </div>
+          )}
         </div>
-        {processedVideo && (
-          <div>
-            <h2>Vídeo Processado:</h2>
-            <video controls src={processedVideo} width="600" />
-          </div>
-        )}
       </div>
     </div>
   );

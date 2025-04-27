@@ -1,100 +1,126 @@
-import express from 'express'; // Framework para criar o servidor web
-import multer from 'multer'; // Middleware para upload de arquivos
-import cors from 'cors'; // Permite requisições de outras origens
-import path from 'path'; // Lida com caminhos de arquivos/diretórios
-import { exec } from 'child_process'; // Executa comandos externos, como scripts Python
-import fs from 'fs'; // Manipula arquivos no sistema
-import { fileURLToPath } from 'url'; // Lida com caminhos em módulos ES6
+// serverIA.mjs
+import express from 'express';
+import multer from 'multer';
+import cors from 'cors';
+import path from 'path';
+import { exec } from 'child_process';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 
-// Configurar __dirname para módulos ES6
+// Configurar __dirname para ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3001;
 
-// Configurar CORS
+// Middleware
 app.use(cors());
+app.use(express.json()); // Para receber JSON no body
 
-// Configurar multer para upload de arquivos com extensão
+// Configuração do Multer para uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+    cb(null, 'uploads/'); // Pasta uploads/
   },
   filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname); // Pega a extensão do arquivo
-    cb(null, `${file.fieldname}-${Date.now()}${ext}`); // Define o nome com extensão
+    const ext = path.extname(file.originalname);
+    cb(null, `${file.fieldname}-${Date.now()}${ext}`); // Exemplo: video-1714165800000.mp4
   },
 });
 
 const upload = multer({ storage });
 
-// Rota para processar o vídeo
-app.post('/process-video', upload.single('video'), (req, res) => {
+// Rota para fazer upload do vídeo
+app.post('/upload-video', upload.single('video'), (req, res) => {
   try {
     if (!req.file) {
       console.error('Nenhum arquivo foi enviado.');
       return res.status(400).send('Nenhum arquivo foi enviado.');
     }
 
-    // Caminhos
-    const videoPath = path.resolve(__dirname, 'uploads', req.file.filename);
+    console.log('Vídeo recebido com sucesso:', req.file.filename);
+
+    // Retorna o nome do arquivo para o frontend
+    res.status(200).json({ filename: req.file.filename });
+  } catch (error) {
+    console.error('Erro no upload:', error.message);
+    res.status(500).send('Erro no upload do vídeo.');
+  }
+});
+
+// Rota para processar o vídeo
+app.post('/process-video', async (req, res) => {
+  try {
+    const { filename } = req.body;
+
+    if (!filename) {
+      return res.status(400).send('Nome do arquivo não fornecido.');
+    }
+
+    const videoPath = path.resolve(__dirname, 'uploads', filename);
     const outputVideoPath = path.resolve(__dirname, 'results', 'output_video.mp4');
     const modelPath = path.resolve(__dirname, 'models', 'model.py');
 
+    console.log('Caminho do vídeo para processar:', videoPath);
 
-
-    // Logs para depuração
-    console.log('Caminho do vídeo recebido:', videoPath);
-    console.log('Caminho do modelo Python:', modelPath);
-    console.log('Caminho do vídeo processado:', outputVideoPath);
-
-    // Verificar se o script Python existe
-    if (!fs.existsSync(modelPath)) {
-      console.error(`Arquivo do modelo não encontrado: ${modelPath}`);
-      return res.status(500).send('Arquivo do modelo não encontrado.');
-    }
-
-    // Verificar se o vídeo existe
     if (!fs.existsSync(videoPath)) {
-      console.error(`Vídeo não encontrado: ${videoPath}`);
-      return res.status(500).send('Vídeo não encontrado.');
+      return res.status(404).send('Arquivo de vídeo não encontrado.');
     }
 
-    // Comando para executar o script Python
-    const command = `python "${modelPath}" --video "${videoPath}"`;
-    console.log('Comando para executar o Python:', command);
+    if (!fs.existsSync(modelPath)) {
+      return res.status(500).send('Script de processamento não encontrado.');
+    }
 
-    // Executar o script Python
+    const command = `python "${modelPath}" --video "${videoPath}"`;
+    console.log('Executando script:', command);
+
     exec(command, (error, stdout, stderr) => {
       if (error) {
-        console.error('Erro ao executar o script Python:', stderr || error.message);
+        console.error('Erro ao executar o script:', stderr || error.message);
         return res.status(500).send('Erro ao processar o vídeo.');
       }
 
-      console.log('Saída do script Python:', stdout);
+      console.log('Saída do script:', stdout);
 
-      // Verificar se o vídeo processado foi gerado
-      if (!fs.existsSync(outputVideoPath)) {
-        console.error(`Vídeo processado não encontrado: ${outputVideoPath}`);
-        return res.status(500).send('Erro ao gerar o vídeo processado.');
+      // Aqui vamos extrair a contagem do stdout
+      // Esperamos que o seu script Python imprima algo assim no final:
+      // CONTAGEM: {"carro": 10, "moto": 5, "onibus": 1}
+
+      const match = stdout.match(/CONTAGEM:\s*(\{.*\})/);
+      if (match) {
+        const countData = JSON.parse(match[1]);
+        return res.status(200).json({ counts: countData });
+      } else {
+        console.error('Não foi possível extrair a contagem dos veículos.');
+        return res.status(500).send('Erro ao extrair a contagem dos veículos.');
       }
-
-      // Enviar o vídeo processado como resposta
-      res.sendFile(outputVideoPath, { root: '.' }, (err) => {
-        if (err) {
-          console.error('Erro ao enviar o vídeo processado:', err.message);
-          return res.status(500).send('Erro ao enviar o vídeo processado.');
-        }
-      });
     });
+
   } catch (error) {
-    console.error('Erro inesperado:', error.message);
+    console.error('Erro inesperado no servidor:', error.message);
     res.status(500).send('Erro no servidor.');
   }
 });
 
-// Iniciar o servidor
+// Nova rota para baixar o vídeo processado
+app.get('/download-video', (req, res) => {
+  const outputVideoPath = path.resolve(__dirname, 'results', 'output_video.mp4');
+
+  if (!fs.existsSync(outputVideoPath)) {
+    console.error('Vídeo processado não encontrado para download.');
+    return res.status(404).send('Vídeo processado não encontrado.');
+  }
+
+  res.download(outputVideoPath, 'video_processado.mp4', (err) => {
+    if (err) {
+      console.error('Erro ao enviar o vídeo processado para download:', err.message);
+    }
+  });
+});
+
+
+// Inicializa o servidor
 app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`✅ Servidor rodando na porta ${PORT}`);
 });

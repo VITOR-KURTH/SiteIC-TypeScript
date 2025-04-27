@@ -1,0 +1,141 @@
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[7].use[3]!./src/CssModules/Home.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+.Home_container__cIIrz {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 100px;
+  padding: 0 60px;
+  min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
+}
+
+.Home_item___CMQJ {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+  justify-content: center; /* Centraliza o conteúdo dentro de cada item */
+}
+
+.Home_title__abEIk {
+  font-size: 72px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.Home_desc__z5GrM {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #d8cbff;
+  font-weight: 500;
+}
+
+.Home_button__Zx_Z4 {
+  padding: 15px 13px;
+  cursor: pointer;
+  background-color: #e43397;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 15px;
+  width: max-content;
+  font-weight: 500;
+}
+
+.Home_button__Zx_Z4:hover {
+  background-color: #e4339794;
+}
+
+.Home_arrow__NCOxS {
+  margin-left: 20px;
+}
+
+.Home_img__L7nop {
+  max-width: 100%;
+  height: 500px;
+  object-fit: cover;
+  margin-right: 0;
+  margin-left: 20%;
+}
+
+.Home_logo-mobile__jkuFf {
+  display: none; /* Esconde o logo por padrão */
+}
+
+/* Media Query para telas menores que 800px */
+@media screen and (max-width: 800px) {
+  .Home_container__cIIrz {
+    flex-direction: column; /* Muda para coluna em telas menores */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    gap: 20px; /* Reduzi o espaçamento para melhor distribuição */
+    padding: 20px; /* Menor espaçamento lateral */
+    min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
+  }
+
+  .Home_item___CMQJ {
+    gap: 20px; /* Reduzi o espaçamento interno */
+    width: 100%; /* Garante que o item ocupe toda a largura disponível */
+  }
+
+  .Home_title__abEIk {
+    font-size: 2.5rem; /* Redução da fonte do título */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .Home_desc__z5GrM {
+    font-size: 14px; /* Redução para uma leitura confortável em telas menores */
+    text-align: center; /* Centraliza a descrição */
+  }
+
+  .Home_button__Zx_Z4 {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .Home_img__L7nop {
+    height: 300px;
+  }
+
+  .Home_logo-mobile__jkuFf {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .Home_container__cIIrz {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .Home_item___CMQJ {
+    gap: 15px;
+  }
+
+  .Home_title__abEIk {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .Home_desc__z5GrM {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .Home_button__Zx_Z4 {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .Home_img__L7nop {
+    display: none;
+  }
+
+  .Home_logo-mobile__jkuFf {
+    display: block;
+  }
+}
+

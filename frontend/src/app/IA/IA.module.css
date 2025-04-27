@@ -10,10 +10,11 @@
   display: flex;
   background-color: #dadada;
   width: 540px;
-  height: 500px;
+  height: 550px; /* aumentei um pouco a altura */
   border-radius: 12px;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .item1 {
@@ -21,10 +22,12 @@
   flex-direction: column;
   background-color: #9a9a9a;
   width: 440px;
-  height: 400px;
+  height: 500px; /* aumentei também */
   border-radius: 12px;
   padding: 20px;
   align-items: center;
+  overflow-y: auto; /* adiciona scroll se precisar */
+  gap: 15px; /* separação automática entre itens */
 }
 
 .title1 {
@@ -53,7 +56,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
@@ -64,7 +67,68 @@
   transform: scale(1.1);
 }
 
-/* Esconde o input padrão */
 .hiddenInput {
   display: none;
+}
+
+.countsContainer {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #ececec;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countTitle {
+  font-family: 'Poppins';
+  font-size: 1.4em;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.countList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.countItem {
+  font-family: 'Poppins';
+  font-size: 1.1em;
+  color: #222222;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.summary {
+  font-family: 'Poppins';
+  font-size: 1em;
+  color: #111111;
+  margin-top: 10px;
+}
+
+.downloadButton {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #dadada;
+  border: 2px solid #545454;
+  color: #000000;
+  font-family: 'Poppins';
+  font-size: 1.1em;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.downloadButton:hover {
+  background-color: #b3b3b3;
+  border-color: #545454;
+  transform: scale(1.05);
 }
